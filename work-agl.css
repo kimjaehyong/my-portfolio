@@ -1,0 +1,101 @@
+/* AGL case study page (work-agl.html) */
+
+.page-work-agl .work-agl-main {
+  padding-bottom: 0;
+}
+
+.page-work-agl .work1-title-detail {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  /* Horizontal padding 0 — align with header logo row */
+  padding: calc(48px * var(--scale-view)) 0 100px;
+  box-sizing: border-box;
+  background: var(--color-bg);
+}
+
+.page-work-agl .work1-title-detail-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(24px, 3vw, 48px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page-work-agl .work1-title-detail-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.page-work-agl .work1-title {
+  margin: 0 0 24px;
+  font-family: Paperlogy, "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(28px, 4.2vw, 48px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.page-work-agl .work1-subtitle {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(17px, 2.7vw, 28px);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+/*
+ * Full-bleed to viewport: .desktop-main is narrower than 100vw (92.5vw cap),
+ * so use 100vw + margin breakout so A-1~4 touch the browser edges (body overflow-x: hidden).
+ */
+.page-work-agl .desktop .desktop-main > .work1-detail-stack {
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--color-bg);
+}
+
+.page-work-agl .work1-detail-img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+@media (min-width: 1025px) {
+  .page-work-agl .work1-title {
+    font-size: 48px;
+  }
+
+  .page-work-agl .work1-subtitle {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .page-work-agl .work1-title-detail {
+    padding: 40px 0 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-work-agl .work1-title-detail {
+    padding: 32px 0 100px;
+  }
+}

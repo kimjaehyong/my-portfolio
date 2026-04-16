@@ -1,0 +1,242 @@
+/* 로고 스토리 — 좌측 SVG(me-section1-img1·2), 우측 칩+텍스트 시안에 맞춤 */
+
+.page-logo-story {
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+.page-logo-story .logo-story-main {
+  width: 100%;
+  max-width: var(--content-max, 1740px);
+  margin: 0 auto;
+  padding: 24px var(--padding-side-contact, 90px) 80px;
+  box-sizing: border-box;
+}
+
+.page-logo-story .logo-story-back {
+  display: inline-block;
+  margin: 0 0 28px;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(14px, 1.1vw, 18px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+.page-logo-story .logo-story-back:hover {
+  text-decoration: underline;
+}
+
+.page-logo-story .logo-story-content {
+  display: grid;
+  grid-template-columns: minmax(0, 600px) minmax(280px, 1fr);
+  column-gap: clamp(32px, 4vw, 72px);
+  row-gap: 40px;
+  /* 좌측 비주얼·우측 타이포 열 하단 정렬 */
+  align-items: end;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page-logo-story .logo-story-visual {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 28px);
+  width: 100%;
+  min-width: 0;
+}
+
+.page-logo-story .logo-story-visual-card {
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.page-logo-story .logo-story-visual-card img {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.page-logo-story .logo-story-copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 4vw, 56px);
+  min-width: 0;
+  padding-top: 0;
+}
+
+.page-logo-story .logo-story-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.page-logo-story .logo-story-chip {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 100%;
+  padding: 8px 18px;
+  min-height: 36px;
+  border-radius: 6px;
+  background: var(--color-black);
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+}
+
+.page-logo-story .logo-story-prose {
+  margin: 0;
+  max-width: 52ch;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+  color: var(--color-gray);
+}
+
+.page-logo-story .logo-story-prose + .logo-story-prose {
+  margin-top: 0.75em;
+}
+
+.page-logo-story .logo-story-prose strong {
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.page-logo-story .logo-story-prose-tight {
+  max-width: 48ch;
+  line-height: 1.55;
+}
+
+.page-logo-story .logo-story-swatches {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: clamp(12px, 1.5vw, 20px);
+  width: 100%;
+  max-width: 420px;
+}
+
+.page-logo-story .logo-story-swatch {
+  flex: 1 1 auto;
+  min-width: 140px;
+  max-width: 200px;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.page-logo-story .logo-story-swatch-black {
+  background: var(--color-black);
+}
+
+.page-logo-story .logo-story-swatch-green {
+  background: var(--color-accent-main);
+}
+
+.page-logo-story .logo-story-swatch-labels {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-gray);
+}
+
+.page-logo-story .logo-story-swatch-labels li {
+  margin: 0 0 4px;
+}
+
+.page-logo-story .logo-story-swatch-name {
+  font-weight: 500;
+  color: var(--color-black);
+  margin-right: 6px;
+}
+
+.page-logo-story .logo-story-swatch-labels code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.92em;
+  color: var(--color-gray);
+}
+
+.page-logo-story .logo-story-type-sample {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.35em;
+  margin: 4px 0 0;
+  font-family: Paperlogy, "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+}
+
+.page-logo-story .logo-story-type-sample-en {
+  font-size: clamp(22px, 2.4vw, 36px);
+}
+
+.page-logo-story .logo-story-type-sample-ko {
+  font-size: clamp(17px, 1.85vw, 26px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 1024px) {
+  .page-logo-story .logo-story-main {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .page-logo-story .logo-story-content {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .page-logo-story .logo-story-copy {
+    padding-top: 8px;
+  }
+
+  .page-logo-story .logo-story-prose {
+    max-width: 60ch;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-logo-story .logo-story-main {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 48px;
+  }
+
+  .page-logo-story .logo-story-content {
+    max-width: 100%;
+  }
+
+  .page-logo-story .logo-story-visual-card img {
+    max-width: 100%;
+  }
+
+  .page-logo-story .logo-story-swatches {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,75 @@
+/* OTHER2 — L-1..5 full-bleed, GNB over L-1 hero */
+
+.page-other2 {
+  background: #0a0612;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.page-other2 .desktop {
+  background: transparent;
+}
+
+.page-other2 .desktop-header .gnb-line {
+  filter: invert(1) brightness(1.05);
+}
+
+.page-other2 .desktop-header .logo-name,
+.page-other2 .desktop-header .gnb-link {
+  color: #ffffff;
+}
+
+.page-other2 .desktop-header .gnb-link:hover,
+.page-other2 .desktop-header .gnb-link:focus-visible {
+  color: #c084fc;
+}
+
+.page-other2 .desktop-header .logo-image {
+  filter: brightness(0) invert(1);
+}
+
+.page-other2 .header-menu-btn {
+  filter: brightness(0) invert(1);
+}
+
+.page-other2 .other2-main {
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  gap: 0;
+}
+
+.page-other2 .desktop .desktop-main.other2-main > .desktop-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  min-height: 0;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: auto;
+}
+
+.page-other2 .desktop .desktop-main > .other2-detail-stack {
+  max-width: none;
+  width: 100vw;
+  margin-top: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 0;
+  background: #0a0612;
+}
+
+.page-other2 .other2-detail-img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}

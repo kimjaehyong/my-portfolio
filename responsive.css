@@ -1,0 +1,2997 @@
+/*
+  Tablet / Mobile — Figma Tablet(1024)·Mobile(≤768)
+  - Tablet: (max-width: 1024px) and (min-width: 769px) — 768 이하는 Mobile 전용과 겹치지 않게 경계 분리
+  - Mobile: (max-width: 768px) — WORK·About·Contact 일부 타이포는 390px↔768px 사이 :root --r768-390 으로 보간
+  - var() 허용: --width-container, --width-section, --width-section-inner / --r768-390 / color-* / font-family(--font-main, --font-title)
+*/
+
+:root {
+  --font-main: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  --font-title: Paperlogy, "Pretendard Variable", Pretendard, sans-serif;
+}
+
+/* ─── Tablet: 1024 ~ 769 (768 이하는 Mobile 전용 미디어쿼리와 겹치지 않게 min 769) ─── */
+@media (max-width: 1024px) and (min-width: 769px) {
+  :root {
+    --width-container: 100%;
+    /* Figma Tablet 프레임 1024, 좌우 32 → 본문 960 */
+    --width-section: 1024px;
+    --width-section-inner: 960px;
+  }
+
+  .desktop {
+    width: var(--width-container);
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-main {
+    width: 100%;
+    max-width: var(--width-section);
+    padding-left: 32px;
+    padding-right: 32px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-main > * {
+    width: 100%;
+    max-width: var(--width-section-inner);
+    box-sizing: border-box;
+  }
+
+  /* ---------- tablet-section-contact (768~1024px): 높이는 콘텐츠에 맞춤 · middle↔footer 50px ---------- */
+  .desktop .desktop-section-contact {
+    width: 100%;
+    max-width: var(--width-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 64px 40px 0;
+    box-sizing: border-box;
+    background: var(--color-contact);
+    overflow: visible;
+  }
+
+  /* ---------- desktop-section-other (Tablet): WORK 타이틀 스케일에 맞춤 ---------- */
+  .desktop .desktop-section-other {
+    width: 100%;
+    max-width: var(--width-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 32px 96px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-other .other-inner {
+    max-width: var(--width-section-inner);
+  }
+
+  .desktop .desktop-section-other .other-line-wrap {
+    margin-bottom: 24px;
+  }
+
+  .desktop .desktop-section-other .line-other {
+    height: 160px;
+  }
+
+  .desktop .desktop-section-other .other-title {
+    margin: 0 0 48px;
+    font-size: 48px;
+    line-height: 52px;
+  }
+
+  .desktop .desktop-section-other .other-section2 {
+    gap: 48px;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .desktop .desktop-section-other .other-section2-img-p1,
+  .desktop .desktop-section-other .other-section2-img-p2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 11px;
+  }
+
+  /* ---------- desktop-section-read (Tablet) — Figma 1024: 좌 헤더 + 우 리스트(썸네일|텍스트 가로) ---------- */
+  .desktop .desktop-section-read {
+    width: 100%;
+    max-width: var(--width-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 64px 32px 80px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-read .read-inner {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+    width: 100%;
+    max-width: var(--width-section-inner);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-read .read-text-box {
+    flex: 0 0 auto;
+    width: min(280px, 30%);
+    max-width: 280px;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-read .read-text-box-title {
+    font-size: 48px;
+    line-height: 1.08;
+  }
+
+  .desktop .desktop-section-read .read-text-box-desc {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .desktop .desktop-section-read .read-text-box-button {
+    width: 160px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .desktop .desktop-section-read .read-carousel-wrap {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-read .read-carousel-viewport {
+    overflow: visible;
+  }
+
+  .desktop .desktop-section-read .read-section-list {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    gap: 40px;
+  }
+
+  .desktop .desktop-section-read .read-pagination {
+    display: none;
+  }
+
+  .desktop .desktop-section-read .read-more--mobile {
+    display: none;
+  }
+
+  .desktop .desktop-section-read .read-more--desktop {
+    display: inline-flex;
+  }
+
+  .desktop .desktop-section-read .read-section-item {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+
+  .desktop .desktop-section-read .read-section-item.align-vertical-center {
+    align-items: center;
+  }
+
+  .desktop .desktop-section-read .read-img {
+    width: min(280px, 45%);
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 3;
+    flex-shrink: 0;
+  }
+
+  .desktop .desktop-section-read .read-img-text {
+    gap: 48px;
+    justify-content: center;
+    min-height: 0;
+  }
+
+  .desktop .desktop-section-read .read-title {
+    font-size: 18px;
+    line-height: 1.45;
+  }
+
+  .desktop .desktop-section-read .read-chip {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .desktop .desktop-section-read .read-date {
+    font-size: 15px;
+  }
+
+  .desktop .desktop-section-contact .contact-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    max-width: var(--width-section-inner);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-contact .contact-section-title {
+    margin: 0 0 64px;
+    min-height: 0;
+    font-family: var(--font-title);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 52px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-contact .section-middle {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px 28px;
+    row-gap: 36px;
+    width: 100%;
+    min-height: 0;
+    margin-bottom: 32px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-contact .contact-sub-text .contact-sub-text-lead,
+  .desktop .desktop-section-contact .contact-sub-text .contact-sub-text-follow {
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-contact .tablet-contact-logo {
+    flex: 0 0 280px;
+    width: 280px;
+    max-width: min(280px, 100%);
+    min-width: 0;
+    margin-left: auto;
+    margin-right: 0;
+    opacity: 0.58;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-contact .desktop-contact-logo-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .desktop .desktop-section-contact .section-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 24px 0 0;
+    border: none;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-contact .section-header .logoname {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 0;
+    padding: 0 0 30px;
+    gap: 16px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-contact .section-header .contact-footer-copy,
+  .desktop .desktop-section-contact .section-header .contact-footer-email {
+    font-family: var(--font-main);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-contact .section-header .contact-footer-email {
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  @media (max-width: 820px) {
+    .desktop .desktop-section-contact {
+      padding: 56px 32px 0;
+    }
+
+    .desktop .desktop-section-contact .section-middle {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .desktop .desktop-section-contact .section-text-box {
+      max-width: 100%;
+    }
+
+    .desktop .desktop-section-contact .tablet-contact-logo {
+      align-self: flex-end;
+      flex: 0 0 auto;
+      width: min(280px, 100%);
+      max-width: min(280px, 100%);
+    }
+  }
+
+  /* ---------- tablet-header: 라인·간격은 데스크톱과 동일(상단 0, line↔logoname 16px), 가로만 열에 맞춤 ---------- */
+  .desktop .desktop-header {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-height: 120px;
+    height: auto;
+    padding: var(--padding-top-header-line) 0 0;
+    gap: var(--gap-header-logoname-line);
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-header .gnb-line-wrap {
+    flex-shrink: 0;
+    display: block;
+    width: 100%;
+    /* tablet: 라인을 오른쪽으로 더 길게 보이도록 우측 여백 축소 */
+    padding: 0 0 0 8px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-header .gnb-line {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .desktop .desktop-header .logoname {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40px;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 0;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-header .desktop-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 300px;
+    max-width: 300px;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-header .logo-image {
+    width: auto;
+    height: 42px;
+    max-height: 42px;
+    max-width: 30px;
+    object-fit: contain;
+  }
+
+  .desktop .desktop-header .logo-name {
+    font-family: var(--font-main);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37px;
+    letter-spacing: 0;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-header .gnb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding-right: 0;
+    min-width: 0;
+  }
+
+  /* GNB — style.css 와 동일 clamp (고정 24px 금지: 1024px 진입 시 vw로 줄어든 글자가 24px로 튀어 오르는 현상 방지) */
+  .desktop .desktop-header .gnb-link {
+    font-family: var(--font-main);
+    font-size: clamp(16px, 1.25vw, 24px);
+    font-weight: 400;
+    line-height: clamp(22px, 1.5625vw, 30px);
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  /* ---------- tablet-section-hero (Figma: column, hero-inner 1190, 상단 여백 ~122) ---------- */
+  .desktop .desktop-section-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: var(--width-section-inner);
+    min-height: 1360px;
+    height: auto;
+    padding-top: 122px;
+    padding-bottom: 0;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-hero .hero-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    padding-top: 13px;
+    padding-bottom: 0;
+    gap: 0;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-hero .hero-title-wrap {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    gap: 24px;
+    box-sizing: border-box;
+  }
+
+  /*
+   타이틀: 1024→180/120, 768→132/88 로 선형 보간 (중첩 미디어쿼리 제거 → 구간 경계에서 간격 체감 변화 방지)
+   1024: calc(18.75vw - 12px) = 180px, 768: 132px
+   1024: calc(12.5vw - 8px) = 120px, 768: 88px
+  */
+  .desktop .desktop-section-hero .hero-title-main {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: calc(18.75vw - 12px);
+    font-weight: 800;
+    line-height: calc(18.75vw - 12px);
+    letter-spacing: -3.6px;
+    color: var(--color-accent-main);
+  }
+
+  .desktop .desktop-section-hero .hero-title-sub {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: calc(12.5vw - 8px);
+    font-weight: 800;
+    line-height: calc(12.5vw - 8px);
+    letter-spacing: -2.4px;
+    color: transparent;
+    -webkit-text-stroke: 3px var(--color-accent-main);
+  }
+
+  /* 타이틀 ↔ 이미지: 간격 0 */
+  .desktop .desktop-section-hero .hero-img {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    margin-top: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 태블릿 히어로 이미지 — 가운데 (너비 680 → 600) */
+  .desktop .desktop-section-hero .hero-img-visual {
+    display: block;
+    width: 600px;
+    max-width: 100%;
+    height: auto;
+    max-height: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+  }
+
+  /* Scroll down — 데스크톱과 동일 (24px / regular / line-height 32px, style.css clamp 상한) */
+  .desktop .desktop-section-hero .scroll-down {
+    position: static;
+    transform: none;
+    align-self: center;
+    width: 100%;
+    max-width: var(--width-section-inner);
+    margin: 0;
+    margin-top: auto;
+    padding-top: 24px;
+    text-align: center;
+    font-family: var(--font-main);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  /* ---------- tablet-section-about (Figma 376:79, tablet-section-about-1 / 2) ----------
+     상단: 프로필 → 100px → 텍스트 + 24px + 로고 (align-bottom)
+     구분선: 위·아래 32px | 하단 블록 gap 40px(기존 77의 약 ½) | INTRO-MORE 162px·하단 정렬
+  */
+  .desktop .desktop-section-about {
+    width: 100%;
+    max-width: var(--width-section-inner);
+    min-height: 0;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    background: var(--color-bg);
+  }
+
+  .desktop .desktop-section-about .about-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    max-width: var(--width-section-inner);
+    min-height: 0;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-about .about-top {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 100px;
+    row-gap: 100px;
+    min-height: 0;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+  }
+
+  /* DOM상 아래에 있지만 시각 순서: 사진 → 텍스트+로고 (Figma와 동일) — 태블릿에서 프로필 살짝 축소 */
+  .desktop .desktop-section-about .about-id-photo {
+    order: -1;
+    align-self: center;
+    flex: 0 0 auto;
+    width: min(556px, 100%);
+    max-width: min(556px, 100%);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border-radius: 40px;
+  }
+
+  /* project-box와 동일: 1fr | 162px → logo-box 오른쪽 = 소개 더보기 오른쪽 */
+  .desktop .desktop-section-about .about-left {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 162px;
+    gap: 24px;
+    align-items: end;
+    align-self: stretch;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    text-align: left;
+  }
+
+  .desktop .desktop-section-about .section-text-box {
+    grid-column: 1;
+    min-width: 0;
+    gap: 24px;
+  }
+
+  .desktop .desktop-section-about .sub-tltle {
+    font-family: var(--font-main);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-about .section-text-box .sub-text {
+    font-family: var(--font-main);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-section-about .logo-box {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 162px;
+    min-width: 0;
+    margin-top: 0;
+    gap: 0;
+    justify-self: stretch;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-about .about-personal-label {
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-section-about .about-logo {
+    width: 84px;
+    height: 84px;
+  }
+
+  .desktop .desktop-section-about .about-brand-link {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-about .logo-box .page-move {
+    width: 100%;
+    max-width: 162px;
+    margin-top: 24px;
+    text-align: right;
+  }
+
+  /* 상단 블록·about-bottom 과의 간격 축소 (기존 76px → 32px) */
+  .desktop .desktop-section-about .about-line {
+    width: 100%;
+    max-width: 860px;
+    height: 0;
+    margin: 32px auto;
+    border: none;
+    border-top: 1px solid var(--color-bg-2);
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-about .about-bottom {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    /* 기존 77px 의 약 1/2 — '2배로 줄이'를 반으로 줄이기로 해석 (2배로 늘리려면 154px) */
+    gap: 40px;
+    row-gap: 40px;
+    min-height: 0;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .desktop .desktop-section-about .career-box,
+  .desktop .desktop-section-about .edu-box,
+  .desktop .desktop-section-about .project-box {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    gap: 16px;
+    padding: 0;
+    box-sizing: border-box;
+    border-left: none;
+  }
+
+  /* about-left와 동일 그리드: 1fr | 162px */
+  .desktop .desktop-section-about .project-box {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 162px;
+    gap: 24px;
+    align-items: end;
+    min-height: 0;
+  }
+
+  .desktop .desktop-section-about .project-box-top {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-about .career-title,
+  .desktop .desktop-section-about .edu-title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    box-sizing: border-box;
+    width: 80px;
+    height: 32px;
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--color-white);
+    background: var(--color-black);
+  }
+
+  .desktop .desktop-section-about .project-title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    box-sizing: border-box;
+    width: 96px;
+    height: 32px;
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--color-white);
+    background: var(--color-black);
+  }
+
+  .desktop .desktop-section-about .career-text,
+  .desktop .desktop-section-about .edu-list,
+  .desktop .desktop-section-about .project-text {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-about .about-line-date {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-section-about .about-line-desc {
+    margin-left: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-about .edu-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .desktop .desktop-section-about .about-intro-more {
+    grid-column: 2;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 162px;
+    margin-top: 0;
+    justify-self: stretch;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: var(--color-black);
+    text-align: right;
+  }
+
+  /* ---------- tablet-section-skill (Figma: tablet-section-skill 389:2422, skill-inner Frame 277:134) ----------
+     skill-inner 기준 top/left·width/height는 MCP 캐시 absoluteBoundingBox 차이로 산출한 px 리터럴
+     좌우 32px는 .desktop-main 패딩 — 좁은 폭에서 960 고정이 body overflow-x:hidden 에 잘리지 않도록
+     섹션을 container로 두고 zoom으로 비율 축소(레이아웃 박스도 함께 줄어듦, Chromium 기준) */
+  .desktop .desktop-section-skill {
+    container-type: inline-size;
+    container-name: tablet-section-skill;
+    width: 100%;
+    max-width: var(--width-section-inner);
+    min-width: 0;
+    min-height: 1274px;
+    padding-top: 160px;
+    padding-bottom: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    overflow-x: visible;
+  }
+
+  .desktop .desktop-section-skill .skill-inner {
+    position: relative;
+    width: 960px;
+    min-width: 0;
+    min-height: 954px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    /* 960 디자인을 섹션 실제 너비(최대 960, main 좌우 32px 안쪽)에 맞춤 — zoom은 레이아웃 박스도 축소 */
+    zoom: calc(100cqw / 960px);
+  }
+
+  @supports not (zoom: 0.5) {
+    .desktop .desktop-section-skill {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .desktop .desktop-section-skill .skill-inner {
+      zoom: unset;
+      min-width: 960px;
+    }
+  }
+
+  .desktop .desktop-section-skill .skill-icon-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .desktop .desktop-section-skill .skill-icon1 {
+    position: absolute;
+    left: 100px;
+    top: 42px;
+    width: 72px;
+    height: 72px;
+    transform: rotate(20deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon2 {
+    position: absolute;
+    left: 809px;
+    top: 63px;
+    width: 110px;
+    height: 129.14px;
+    transform: rotate(-10deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon3 {
+    position: absolute;
+    left: 0;
+    top: 222px;
+    width: 105px;
+    height: 118px;
+    transform: rotate(15deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon4 {
+    position: absolute;
+    left: 848px;
+    top: 441px;
+    width: 112px;
+    height: 112.33px;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon5 {
+    position: absolute;
+    left: 11px;
+    top: 498px;
+    width: 115px;
+    height: 127px;
+    transform: rotate(12deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon6 {
+    position: absolute;
+    left: 741px;
+    top: 762px;
+    width: 92px;
+    height: 105.2px;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon7 {
+    position: absolute;
+    left: 86px;
+    top: 743px;
+    width: 116px;
+    height: 107.92px;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon8 {
+    position: absolute;
+    left: 381px;
+    top: 789px;
+    width: 134px;
+    height: 123.28px;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-text-01,
+  .desktop .desktop-section-skill .skill-text-02,
+  .desktop .desktop-section-skill .skill-text-03,
+  .desktop .desktop-section-skill .skill-text-04,
+  .desktop .desktop-section-skill .skill-text-05 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 130px;
+    border-radius: 65px;
+    background: var(--color-white);
+    border: 1px solid var(--color-black);
+    transform-origin: center;
+    z-index: 1;
+  }
+
+  .desktop .desktop-section-skill .skill-text-label {
+    font-family: var(--font-main);
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 130px;
+    letter-spacing: 0;
+    color: var(--color-black);
+    text-align: center;
+  }
+
+  .desktop .desktop-section-skill .skill-text-01 {
+    left: 300px;
+    top: 0;
+    width: 360px;
+    transform: rotate(0deg);
+  }
+
+  .desktop .desktop-section-skill .skill-text-02 {
+    left: 185px;
+    top: 103px;
+    width: 559.27px;
+    transform: rotate(5deg);
+  }
+
+  .desktop .desktop-section-skill .skill-text-03 {
+    left: 127px;
+    top: 260px;
+    width: 706.55px;
+    transform: rotate(-3deg);
+  }
+
+  .desktop .desktop-section-skill .skill-text-04 {
+    left: 162px;
+    top: 417px;
+    width: 635.36px;
+    transform: rotate(3deg);
+  }
+
+  .desktop .desktop-section-skill .skill-text-05 {
+    left: 202px;
+    top: 562px;
+    width: 556.88px;
+    transform: rotate(-4deg);
+  }
+
+  /* ---------- tablet-section-teamproject (Tablet) ----------
+     라벨 18 · project-content 32 · 본문·필 +2px · project-inner gap 200px · list2 translateX(-100px)
+     portfolio-list: style.css flex:1 1 0 무효화 → flex:0 0 auto + min-height:min-content (이미지 아래 블록 소실 방지) */
+  .desktop .desktop-section-teamproject {
+    width: 100%;
+    max-width: var(--width-section-inner);
+    min-height: 0;
+    padding-bottom: 96px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    background: var(--color-bg);
+    /* style.css 의 flex:1+min-height:0 조합으로 portfolio-list 가 높이 0으로 축소되는 것 방지 */
+    overflow-x: visible;
+  }
+
+  .desktop .desktop-section-teamproject .work-section-title {
+    margin: 0 0 16px;
+    min-height: 0;
+    font-family: var(--font-title);
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 52px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-teamproject .project-inner {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 200px;
+    width: 100%;
+    max-width: var(--width-section-inner);
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section-inner {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 24px;
+    width: 100%;
+    min-height: min-content;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-box {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-title {
+    margin: 0;
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-section-teamproject .project-content {
+    margin: 0;
+    font-family: var(--font-main);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 0;
+    color: var(--color-black);
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .work-cover {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 520px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--color-bg-2);
+  }
+
+  .desktop .desktop-section-teamproject .work-cover-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list {
+    display: grid;
+    grid-template-columns: 355fr 296fr;
+    grid-template-rows: auto auto;
+    column-gap: 48px;
+    row-gap: 32px;
+    align-items: start;
+    justify-items: start;
+    /* style.css flex: 1 1 0 덮어써서 세로 카드 안에서 높이가 죽지 않게 함 */
+    flex: 0 0 auto;
+    align-self: stretch;
+    width: 100%;
+    min-width: 0;
+    min-height: min-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .project {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .service {
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .tool {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    min-width: 0;
+    /* left 대신 transform — 레이아웃 높이는 유지, overflow만 주의 */
+    transform: translateX(-100px);
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .role {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+    transform: translateX(-100px);
+  }
+
+  .desktop .desktop-section-teamproject .project,
+  .desktop .desktop-section-teamproject .service,
+  .desktop .desktop-section-teamproject .tool,
+  .desktop .desktop-section-teamproject .role {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .desktop .desktop-section-teamproject .project-period {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .desktop .desktop-section-teamproject .project-period-label {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-section-teamproject .project-period-value {
+    margin: 0;
+    font-family: var(--font-main);
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-teamproject .servie-title,
+  .desktop .desktop-section-teamproject .tool-title,
+  .desktop .desktop-section-teamproject .role-title {
+    margin: 0;
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-section-teamproject .service-content {
+    margin: 0;
+    font-family: var(--font-main);
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: var(--color-black);
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .tool-content,
+  .desktop .desktop-section-teamproject .role-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .desktop .desktop-section-teamproject .tool-pill,
+  .desktop .desktop-section-teamproject .role-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    min-height: 40px;
+    height: 40px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 450;
+    line-height: 18px;
+    letter-spacing: 0;
+    color: var(--color-black);
+    background: var(--color-bg-2);
+  }
+
+  /* project-section1 Role: 태블릿은 기존 한 줄 + 필요 시 가로 스크롤 (데스크톱 전용 레이아웃은 style.css) */
+  .desktop .desktop-section-teamproject .project-section1 .role-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .desktop .desktop-section-teamproject .project-section1 .role-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* project-section2(YAMOYO): role-pills-row 2줄 — 행 안 칩 간격 8px */
+  .desktop .desktop-section-teamproject .project-section2 .role-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row:first-child .role-pill:first-child {
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row .role-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* project-section3: 1행 기획(213)|UX(147) · 2행 Design|Prototype|Branding(동일 gap) */
+  .desktop .desktop-section-teamproject .project-section3 .role-content {
+    display: grid;
+    grid-template-columns: 213px 147px;
+    grid-template-rows: auto auto;
+    column-gap: 8px;
+    row-gap: 8px;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-content > .role-pill:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    width: 213px;
+    min-width: 213px;
+    max-width: 213px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-content > .role-pill:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    width: 147px;
+    min-width: 147px;
+    max-width: 147px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-content > .role-pills-row {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill:nth-child(1) {
+    width: 168px;
+    min-width: 168px;
+    max-width: 168px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill:nth-child(2) {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill:nth-child(3) {
+    width: 128px;
+    min-width: 128px;
+    max-width: 128px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-content > .role-pill,
+  .desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill {
+    white-space: nowrap;
+  }
+
+  /* project-section4~6: 두 칩 가로 한 줄 */
+  .desktop .desktop-section-teamproject .project-section4 .role-content,
+  .desktop .desktop-section-teamproject .project-section5 .role-content,
+  .desktop .desktop-section-teamproject .project-section6 .role-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section4 .role-content,
+  .desktop .desktop-section-teamproject .project-section5 .role-content,
+  .desktop .desktop-section-teamproject .project-section6 .role-content {
+    justify-content: flex-start;
+  }
+
+  .desktop .desktop-section-teamproject .project-section4 .role-pill,
+  .desktop .desktop-section-teamproject .project-section5 .role-pill,
+  .desktop .desktop-section-teamproject .project-section6 .role-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
+/* 데스크톱·태블릿: 햄버거 숨김 (모바일만 표시) */
+@media (min-width: 769px) {
+  .desktop .header-menu-btn {
+    display: none !important;
+  }
+}
+
+/* ─── Mobile / Tablet narrow: 768px 이하 (Figma Mobile 프레임) ─── */
+@media (max-width: 768px) {
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+
+  :root {
+    --width-container: 100%;
+    --width-section: 100%;
+    --width-section-inner: 100%;
+    /* 390px 뷰포트에서 0, 768px에서 1 — 타이포·칩을 390 기준 ↔ 768 기준 사이로 보간 */
+    --r768-390: clamp(0, calc((100vw - 390px) / (768px - 390px)), 1);
+  }
+
+  .desktop {
+    width: var(--width-container);
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-main {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-main > * {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ---------- header: 라인↔logoname gap 0 · 햄버거 우측 끝 정렬 ---------- */
+  .desktop .desktop-header {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    padding: var(--padding-top-header-line) 0 0;
+    gap: 0;
+    border-bottom: none;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-header .gnb-line-wrap {
+    flex-shrink: 0;
+    display: block;
+    width: 100%;
+    /* mobile: 라인을 우측으로 더 확장 */
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-header .gnb-line {
+    width: 100%;
+    /* gnb-line.svg 1740×2 — 좁은 폭에서 height:auto가 1px 미만이 되어 사라지는 것 방지 */
+    height: 2px;
+    min-height: 2px;
+    display: block;
+    object-fit: fill;
+  }
+
+  .desktop .desktop-header .logoname {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 0;
+    margin: -4px 0 0;
+    padding: 0;
+    gap: 0;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-header .desktop-logo {
+    flex: 0 1 auto;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    gap: 12px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .desktop .desktop-header .logo-image {
+    width: auto;
+    height: 28px;
+    max-height: 28px;
+    max-width: 24px;
+    object-fit: contain;
+  }
+
+  .desktop .desktop-header .logo-name {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-header .gnb {
+    display: none;
+  }
+
+  .desktop .header-menu-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+    /* mobile-logo 행과 수직 중앙에 맞추며 우측으로 추가 5px 이동 */
+    transform: translate(10px, -5px);
+  }
+
+  .desktop .header-menu-btn img {
+    display: block;
+    width: 36px;
+    height: 36px;
+  }
+
+  .desktop .desktop-header .mobile-menu-overlay[hidden] {
+    display: none;
+  }
+
+  .desktop .desktop-header .mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: rgba(244, 241, 238, 0.92);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.24s ease;
+  }
+
+  .desktop .desktop-header .mobile-menu-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .desktop .desktop-header .mobile-menu-panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    background: #fdfbf8;
+    transform: translateY(-10px) scale(0.995);
+    transition: transform 0.28s ease;
+  }
+
+  .desktop .desktop-header .mobile-menu-overlay.is-open .mobile-menu-panel {
+    transform: translateY(0) scale(1);
+  }
+
+  .desktop .desktop-header .mobile-menu-close {
+    position: absolute;
+    top: 44px;
+    right: 40px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .desktop .desktop-header .mobile-menu-close-icon {
+    width: 44px;
+    height: 44px;
+    display: block;
+  }
+
+  .desktop .desktop-header .mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 104px;
+  }
+
+  .desktop .desktop-header .mobile-menu-link {
+    font-family: var(--font-title);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 0.92;
+    color: #2a2f3a;
+    text-decoration: none;
+    letter-spacing: 0;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .desktop .desktop-header .mobile-menu-link:hover,
+  .desktop .desktop-header .mobile-menu-link:focus-visible {
+    color: #4db17f;
+    transform: translateX(6px);
+  }
+
+  /* ---------- hero ---------- */
+  .desktop .desktop-section-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    min-height: min(100vh, 812px);
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 12px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-hero .hero-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    min-width: 0;
+    height: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    gap: 0;
+    box-sizing: border-box;
+    /* 패딩 반영된 실제 열 너비 기준으로 타이포 스케일 */
+    container-type: inline-size;
+    container-name: hero-inner;
+  }
+
+  .desktop .desktop-section-hero .hero-title-wrap {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    max-height: none;
+    margin: 0 0 20px;
+    padding: 0;
+    gap: clamp(6px, 1.6cqi, 12px);
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  /* The core — 열 너비에 비례(한 줄); cqi 미지원 브라우저는 vw 폴백 */
+  .desktop .desktop-section-hero .hero-title-main {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    font-family: var(--font-title);
+    font-size: clamp(38px, 18.5vw, 120px);
+    font-size: clamp(38px, 20.5cqi, 120px);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    color: var(--color-accent-main);
+    white-space: nowrap;
+  }
+
+  /* of the ‘ㅎ’uman — 긴 줄은 더 작은 비율 */
+  .desktop .desktop-section-hero .hero-title-sub {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    font-family: var(--font-title);
+    font-size: clamp(22px, 10.2vw, 74px);
+    font-size: clamp(22px, 11.2cqi, 74px);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-accent-main);
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-hero .hero-img {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 220px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent url("./public/images/mobile-hero-img.svg") center center / contain no-repeat;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-hero .hero-img-visual {
+    display: none;
+  }
+
+  .desktop .desktop-section-hero .scroll-down {
+    position: static;
+    transform: none;
+    align-self: center;
+    width: 100%;
+    margin: 0;
+    margin-top: auto;
+    padding-top: 20px;
+    text-align: center;
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  /* ---------- about (768 Figma: 좌우 70 = main 20 + section 50) · 텍스트↔logo-box 40px ---------- */
+  .desktop .desktop-section-about {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    padding-top: 24px;
+    padding-bottom: 48px;
+    /* .desktop-main(20px) + 섹션(20px) = 총 40px 인셋 */
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-about .about-inner {
+    max-width: 100%;
+    gap: 0;
+  }
+
+  .desktop .desktop-section-about .about-top {
+    flex-direction: column;
+    gap: 32px;
+    row-gap: 32px;
+    padding-left: 0;
+    padding-right: 0;
+    min-height: 0;
+  }
+
+  /* 프로필: 가로형 소스 → 높이=폭 정사각, absolute fill로 높이 확실히 확보 */
+  .desktop .desktop-section-about .about-id-photo {
+    order: -1;
+    align-self: stretch;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+
+  .desktop .desktop-section-about .about-id-photo .about-profile-img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .desktop .desktop-section-about .about-left {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .desktop .desktop-section-about .about-left > .logo-box {
+    margin-top: 32px;
+  }
+
+  .desktop .desktop-section-about .section-text-box {
+    gap: 12px;
+  }
+
+  .desktop .desktop-section-about .sub-tltle {
+    font-family: var(--font-main);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-about .section-text-box .sub-text {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0;
+    color: var(--color-gray);
+  }
+
+  .desktop .desktop-section-about .about-text-nowrap {
+    white-space: normal;
+  }
+
+  .desktop .desktop-section-about .logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: none;
+    gap: 10px;
+  }
+
+  .desktop .desktop-section-about .logo-box .page-move {
+    width: auto;
+    max-width: none;
+    margin-top: 6px;
+    text-align: left;
+  }
+
+  .desktop .desktop-section-about .about-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .desktop .desktop-section-about .about-line {
+    max-width: 100%;
+    margin: 24px 0 28px;
+  }
+
+  .desktop .desktop-section-about .about-bottom {
+    flex-direction: column;
+    gap: 24px;
+    row-gap: 24px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .desktop .desktop-section-about .career-box,
+  .desktop .desktop-section-about .edu-box,
+  .desktop .desktop-section-about .project-box {
+    border-left: none;
+    padding: 10px 0;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-about .about-bottom .project-box {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 12px;
+    row-gap: 20px;
+    align-items: start;
+  }
+
+  .desktop .desktop-section-about .about-bottom .project-box-top {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 12px;
+    row-gap: 10px;
+    align-items: start;
+  }
+
+  .desktop .desktop-section-about .about-bottom .project-title {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    justify-self: start;
+    width: 96px;
+    height: 32px;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 500;
+    border-radius: 6px;
+  }
+
+  .desktop .desktop-section-about .about-bottom .project-text {
+    margin: 0;
+    grid-column: 1 / -1;
+    min-width: 0;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .desktop .desktop-section-about .about-bottom .about-intro-more {
+    grid-column: 2;
+    justify-self: end;
+    align-self: center;
+    margin: 0;
+    padding: 0;
+    font-size: var(--font-about-career);
+    line-height: var(--line-height-about-career);
+    text-align: right;
+    text-decoration: none;
+    color: var(--color-black);
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-about .career-title,
+  .desktop .desktop-section-about .edu-title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    box-sizing: border-box;
+    width: 80px;
+    height: 32px;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 500;
+    border-radius: 6px;
+  }
+
+  .desktop .desktop-section-about .career-text,
+  .desktop .desktop-section-about .edu-list {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .desktop .desktop-section-about .about-line-date {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .desktop .desktop-section-about .about-personal-label {
+    font-size: calc(10px + (16px - 10px) * var(--r768-390));
+    font-weight: 500;
+    line-height: calc(12px + (22px - 12px) * var(--r768-390));
+  }
+
+  .desktop .desktop-section-about .about-line-desc {
+    margin-left: 8px;
+    display: inline;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ---------- skill (태블릿과 동일 zoom 패턴, 모바일 뷰포트에 맞춤) ---------- */
+  .desktop .desktop-section-skill {
+    container-type: inline-size;
+    container-name: mobile-section-skill;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    padding-top: 56px;
+    padding-bottom: 56px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: visible;
+  }
+
+  .desktop .desktop-section-skill .skill-inner {
+    position: relative;
+    width: 960px;
+    min-width: 0;
+    min-height: 954px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    zoom: calc(100cqw / 960px);
+  }
+
+  @supports not (zoom: 0.5) {
+    .desktop .desktop-section-skill {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .desktop .desktop-section-skill .skill-inner {
+      zoom: unset;
+      min-width: 960px;
+    }
+  }
+
+  .desktop .desktop-section-skill .skill-icon-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .desktop .desktop-section-skill .skill-icon1 {
+    position: absolute;
+    left: 100px;
+    top: 42px;
+    width: 72px;
+    height: 72px;
+    transform: rotate(20deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon2 {
+    position: absolute;
+    left: 809px;
+    top: 63px;
+    width: 110px;
+    height: 129.14px;
+    transform: rotate(-10deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon3 {
+    position: absolute;
+    left: 0;
+    top: 222px;
+    width: 105px;
+    height: 118px;
+    transform: rotate(15deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon4 {
+    position: absolute;
+    left: 848px;
+    top: 441px;
+    width: 112px;
+    height: 112.33px;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon5 {
+    position: absolute;
+    left: 11px;
+    top: 498px;
+    width: 115px;
+    height: 127px;
+    transform: rotate(12deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon6 {
+    position: absolute;
+    left: 741px;
+    top: 762px;
+    width: 92px;
+    height: 105.2px;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon7 {
+    position: absolute;
+    left: 86px;
+    top: 743px;
+    width: 116px;
+    height: 107.92px;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-icon8 {
+    position: absolute;
+    left: 381px;
+    top: 789px;
+    width: 134px;
+    height: 123.28px;
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  .desktop .desktop-section-skill .skill-text-01,
+  .desktop .desktop-section-skill .skill-text-02,
+  .desktop .desktop-section-skill .skill-text-03,
+  .desktop .desktop-section-skill .skill-text-04,
+  .desktop .desktop-section-skill .skill-text-05 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 130px;
+    border-radius: 65px;
+    background: var(--color-white);
+    border: 1px solid var(--color-black);
+    transform-origin: center;
+    z-index: 1;
+  }
+
+  .desktop .desktop-section-skill .skill-text-label {
+    font-family: var(--font-main);
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 130px;
+    letter-spacing: 0;
+    color: var(--color-black);
+    text-align: center;
+  }
+
+  .desktop .desktop-section-skill .skill-text-01 {
+    left: 300px;
+    top: 0;
+    width: 360px;
+    transform: rotate(0deg);
+  }
+
+  .desktop .desktop-section-skill .skill-text-02 {
+    left: 185px;
+    top: 103px;
+    width: 559.27px;
+    transform: rotate(5deg);
+  }
+
+  .desktop .desktop-section-skill .skill-text-03 {
+    left: 127px;
+    top: 260px;
+    width: 706.55px;
+    transform: rotate(-3deg);
+  }
+
+  .desktop .desktop-section-skill .skill-text-04 {
+    left: 162px;
+    top: 417px;
+    width: 635.36px;
+    transform: rotate(3deg);
+  }
+
+  .desktop .desktop-section-skill .skill-text-05 {
+    left: 202px;
+    top: 562px;
+    width: 556.88px;
+    transform: rotate(-4deg);
+  }
+
+  /* ---------- work ---------- */
+  .desktop .desktop-section-teamproject {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 48px;
+    overflow-x: hidden;
+  }
+
+  .desktop .desktop-section-other {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px 64px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-other .other-line-wrap {
+    margin-bottom: 16px;
+  }
+
+  .desktop .desktop-section-other .line-other {
+    height: 120px;
+  }
+
+  .desktop .desktop-section-other .other-title {
+    margin: 0 0 24px;
+    font-family: var(--font-title);
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-other .other-section2 {
+    gap: 32px;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .desktop .desktop-section-other .other-section2-img-p1,
+  .desktop .desktop-section-other .other-section2-img-p2 {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+
+  /* ---------- desktop-section-read (Mobile) — content-box1 단일 카드 + 페이지네이션 + 하단 More ---------- */
+  .desktop .desktop-section-read {
+    padding: 40px 20px 48px;
+    overflow-x: hidden;
+  }
+
+  .desktop .desktop-section-read .read-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+
+  .desktop .desktop-section-read .read-text-box {
+    max-width: 100%;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .desktop .desktop-section-read .read-text-box-title {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .desktop .desktop-section-read .read-text-box-desc {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .desktop .desktop-section-read .read-more--desktop {
+    display: none;
+  }
+
+  .desktop .desktop-section-read .read-carousel-wrap {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 48px;
+  }
+
+  .desktop .desktop-section-read .read-carousel-viewport {
+    overflow: visible;
+    width: 100%;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-read .read-carousel-viewport .read-section-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+  /* mobile: first read card only (read-img1); hide slides 2–3 */
+  .desktop .desktop-section-read .read-carousel-viewport .read-section-list > li:nth-child(n + 2) {
+    display: none !important;
+  }
+
+  .desktop .desktop-section-read .read-carousel-viewport .read-section-item {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .desktop .desktop-section-read .read-carousel-viewport .read-section-item.align-vertical-center {
+    align-items: stretch;
+  }
+
+  .desktop .desktop-section-read .read-carousel-viewport .read-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 7 / 4;
+    object-fit: cover;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-read .read-carousel-viewport .read-img-text {
+    gap: 24px;
+  }
+
+  .desktop .desktop-section-read .read-title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .desktop .desktop-section-read .read-title-cate {
+    gap: 12px 16px;
+  }
+
+  .desktop .desktop-section-read .read-chip {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .desktop .desktop-section-read .read-date {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  .desktop .desktop-section-read .read-pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 50px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .desktop .desktop-section-read .read-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.28);
+    cursor: default;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+  }
+
+  .desktop .desktop-section-read .read-dot.is-active {
+    background: var(--color-white);
+  }
+
+  .desktop .desktop-section-read .read-dot:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
+  }
+
+  .desktop .desktop-section-read .read-more--mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 8px;
+    height: 54px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .work-section-title {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-teamproject .project-inner {
+    gap: 40px;
+    max-width: 100%;
+  }
+
+  .desktop .desktop-section-teamproject .project-section {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section-inner {
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-box {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-title {
+    font-size: calc(10px + (14px - 10px) * var(--r768-390));
+    line-height: 1.25;
+  }
+
+  .desktop .desktop-section-teamproject .project-content {
+    font-size: calc(14px + (20px - 14px) * var(--r768-390));
+    font-weight: 600;
+    line-height: 1.35;
+    white-space: normal;
+  }
+
+  .desktop .desktop-section-teamproject .work-cover {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+    aspect-ratio: 16 / 10;
+    border-radius: 16px;
+  }
+
+  .desktop .desktop-section-teamproject .work-cover-img {
+    object-fit: cover;
+  }
+
+  /* 768: Period|Tool · Service|Role 2열 (Figma 모바일 WORK, 6개 프로젝트 공통) */
+  .desktop .desktop-section-teamproject .portfolio-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 20px;
+    row-gap: 20px;
+    align-items: start;
+    justify-items: start;
+    flex: 0 0 auto;
+    align-self: stretch;
+    width: 100%;
+    min-width: 0;
+    min-height: min-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    overflow: visible;
+    transform: none;
+  }
+
+  /* 섹션2·3·4: 우측 Tool(Figma) 열 비율 확대 — 3열 칩·8px gap이 좁은 열에 눌리지 않도록 */
+  .desktop .desktop-section-teamproject .project-section2 .portfolio-list,
+  .desktop .desktop-section-teamproject .project-section3 .portfolio-list,
+  .desktop .desktop-section-teamproject .project-section4 .portfolio-list {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.32fr);
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .project {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .service {
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .tool {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    min-width: 0;
+    width: 100%;
+    transform: none;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .role {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+    width: 100%;
+    transform: none;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .project,
+  .desktop .desktop-section-teamproject .portfolio-list .service,
+  .desktop .desktop-section-teamproject .portfolio-list .tool,
+  .desktop .desktop-section-teamproject .portfolio-list .role {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .desktop .desktop-section-teamproject .project-period-label,
+  .desktop .desktop-section-teamproject .servie-title,
+  .desktop .desktop-section-teamproject .tool-title,
+  .desktop .desktop-section-teamproject .role-title {
+    font-size: calc(10px + (14px - 10px) * var(--r768-390));
+    line-height: calc(12px + (18px - 12px) * var(--r768-390));
+  }
+
+  .desktop .desktop-section-teamproject .project-period-value,
+  .desktop .desktop-section-teamproject .service-content {
+    font-size: calc(11px + (16px - 11px) * var(--r768-390));
+    line-height: calc(16px + (24px - 16px) * var(--r768-390));
+    white-space: normal;
+  }
+
+  /*
+   * WORK Tool 칩: style.css의 flex + calc(gap)이 섹션별 grid와 겹치며 간격이 달라 보이던 문제 방지.
+   * 모바일은 한 경로로 통일 — 인접 칩 사이 가로·세로 모두 8px (flex gap, 줄바꿈 시에도 동일).
+   */
+  .desktop .desktop-section-teamproject .portfolio-list .tool .tool-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .portfolio-list .tool .tool-content .tool-pill {
+    flex: 0 0 auto;
+    width: max-content;
+    max-width: 100%;
+  }
+
+  /*
+   * Tool 2·3·4: grid 3열 + 칩 덩어리만 너비 사용(width:100% 제거) → 오른쪽 빈 ‘프레임’ 붕뜸 제거.
+   * 칩 블록 오른쪽 끝~박스 경계 8px. 5번은 한 줄 3칩이라 열 채움 유지.
+   */
+  .desktop .desktop-section-teamproject .project-section2 .portfolio-list .tool,
+  .desktop .desktop-section-teamproject .project-section3 .portfolio-list .tool,
+  .desktop .desktop-section-teamproject .project-section4 .portfolio-list .tool {
+    align-items: flex-start;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .portfolio-list .tool .tool-content,
+  .desktop .desktop-section-teamproject .project-section3 .portfolio-list .tool .tool-content,
+  .desktop .desktop-section-teamproject .project-section4 .portfolio-list .tool .tool-content {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 8px;
+    width: max-content;
+    max-width: 100%;
+    min-width: 0;
+    justify-content: start;
+    align-content: start;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section5 .portfolio-list .tool .tool-content {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    justify-content: start;
+    align-content: start;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .portfolio-list .tool .tool-content .tool-pill,
+  .desktop .desktop-section-teamproject .project-section3 .portfolio-list .tool .tool-content .tool-pill,
+  .desktop .desktop-section-teamproject .project-section4 .portfolio-list .tool .tool-content .tool-pill,
+  .desktop .desktop-section-teamproject .project-section5 .portfolio-list .tool .tool-content .tool-pill {
+    justify-self: start;
+  }
+
+  /* 섹션2·3·4: 1열 Figma + 2행 Midjourney 동일 열 → stretch로 두 칩 너비 일치 */
+  .desktop .desktop-section-teamproject .project-section2 .portfolio-list .tool .tool-content .tool-pill:nth-child(1),
+  .desktop .desktop-section-teamproject .project-section2 .portfolio-list .tool .tool-content .tool-pill:nth-child(4),
+  .desktop .desktop-section-teamproject .project-section3 .portfolio-list .tool .tool-content .tool-pill:nth-child(1),
+  .desktop .desktop-section-teamproject .project-section3 .portfolio-list .tool .tool-content .tool-pill:nth-child(4),
+  .desktop .desktop-section-teamproject .project-section4 .portfolio-list .tool .tool-content .tool-pill:nth-child(1),
+  .desktop .desktop-section-teamproject .project-section4 .portfolio-list .tool .tool-content .tool-pill:nth-child(4) {
+    justify-self: stretch;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  /* WORK 1~6: Tool·Role 열 동일하게 ~50px 왼쪽 (portfolio-list 우측 열 라인 맞춤) */
+  .desktop .desktop-section-teamproject .portfolio-list .tool .tool-content,
+  .desktop .desktop-section-teamproject .portfolio-list .role .role-content {
+    margin-left: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section .portfolio-list .tool,
+  .desktop .desktop-section-teamproject .project-section .portfolio-list .role {
+    transform: translateX(-50px);
+  }
+
+  .desktop .desktop-section-teamproject .tool-pill,
+  .desktop .desktop-section-teamproject .role-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(28px + (40px - 28px) * var(--r768-390));
+    height: calc(28px + (40px - 28px) * var(--r768-390));
+    max-height: none;
+    padding: 0 calc(12px + (20px - 12px) * var(--r768-390));
+    font-size: calc(10px + (14px - 10px) * var(--r768-390));
+    line-height: 1.2;
+    font-weight: 450;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  /* project-section1: 1행 Responsive | Design system · 2행 UI Design */
+  .desktop .desktop-section-teamproject .project-section1 .role-content {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto auto;
+    column-gap: 8px;
+    row-gap: 8px;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section1 .role-content .role-pill:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .project-section1 .role-content .role-pill:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .project-section1 .role-content .role-pill:nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  /* YAMOYO Role: role-pills-row — UX와 Design system은 같은 행에서만 gap 8px */
+  .desktop .desktop-section-teamproject .project-section2 .role-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row:first-child {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    gap: 6px;
+  }
+
+  /* 기획 칩: 한 행에 UI Design 유지 — 가로 스크롤 없이 첫 칩 안에서만 줄바꿈 */
+  .desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row:first-child .role-pill:first-child {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    height: auto;
+    min-height: calc(28px + (40px - 28px) * var(--r768-390));
+    max-height: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    justify-content: flex-start;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row:first-child .role-pill:nth-child(2) {
+    flex: 0 0 auto;
+    width: max-content;
+    max-width: none;
+    padding-left: calc(12px + (20px - 12px) * var(--r768-390));
+    padding-right: calc(12px + (20px - 12px) * var(--r768-390));
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row:last-child .role-pill {
+    flex: 0 0 auto;
+    width: max-content;
+    max-width: 100%;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  /* project-section4(FLO): 1행 리서치 칩 | UI Design */
+  .desktop .desktop-section-teamproject .project-section4 .role-content {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto;
+    column-gap: 8px;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section4 .role-content .role-pill:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .project-section4 .role-content .role-pill:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  /* project-section5(현대 블루링크): Role 한 줄, 칩 간격 8px */
+  .desktop .desktop-section-teamproject .project-section5 .role-content {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto;
+    column-gap: 8px;
+    row-gap: 8px;
+    align-items: center;
+    justify-content: start;
+    justify-items: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section5 .role-content .role-pill:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .project-section5 .role-content .role-pill:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  /* project-section3 모바일: 1행 기획 및 디자인 100% | UX Research · 2행 pills row */
+  .desktop .desktop-section-teamproject .project-section3 .role-content {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto auto;
+    column-gap: 8px;
+    row-gap: 8px;
+    align-items: start;
+    justify-content: start;
+    justify-items: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-content > .role-pill:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-content > .role-pill:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-content > .role-pills-row {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 8px;
+    margin-top: 0;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: visible;
+    overflow-y: visible;
+    min-width: 0;
+    padding-bottom: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill:nth-child(1),
+  .desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill:nth-child(2) {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: min-content;
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  /* project-section6 Role: Design system | UI Design (한 줄, 8px) */
+  .desktop .desktop-section-teamproject .project-section6 .role-content {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto;
+    column-gap: 8px;
+    row-gap: 8px;
+    align-items: center;
+    justify-content: start;
+    justify-items: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-teamproject .project-section6 .role-content .role-pill:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .project-section6 .role-content .role-pill:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  /* Mobile: hide Period / Service / Tool / Role block */
+  .desktop .desktop-section-teamproject .portfolio-list {
+    display: none !important;
+  }
+
+  /* ---------- contact ---------- */
+  .desktop .desktop-section-contact {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 48px 20px 0;
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .desktop .desktop-section-contact .contact-inner {
+    width: 100%;
+    max-width: 100%;
+    gap: 0;
+  }
+
+  /* Desktop: .section-text-box uses min(740px * --scale-view, 100%); on narrow viewports the scaled width collapses and nowrap titles clip. Force full width on mobile. */
+  .desktop .desktop-section-contact .section-text-box {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex-shrink: 1;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-contact .sub-text-box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-contact .sub-tltle,
+  .desktop .desktop-section-contact .sub-text {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-contact .contact-section-title {
+    margin: 0 0 32px;
+    font-family: var(--font-title);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0;
+    color: var(--color-black);
+  }
+
+  .desktop .desktop-section-contact .section-middle {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    margin-bottom: 24px;
+  }
+
+  /* style.css와 동일 특이도 (.sub-tltle / .sub-text) */
+  .desktop .desktop-section-contact .sub-text .contact-sub-text .contact-sub-text-lead,
+  .desktop .desktop-section-contact .sub-text .contact-sub-text .contact-sub-text-follow {
+    display: block;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-height: 1.45;
+  }
+
+  .desktop .desktop-section-contact .sub-tltle .contact-sub-title {
+    white-space: nowrap;
+    font-size: 20px;
+    line-height: 1.35;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .desktop .desktop-section-contact .sub-text .contact-sub-text {
+    gap: 0.35em;
+    white-space: normal;
+    font-size: 14px;
+    line-height: 1.45;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+
+  .desktop .desktop-section-contact .contact-email {
+    font-size: 14px;
+    line-height: 1.45;
+    word-break: break-all;
+  }
+
+  .desktop .desktop-section-contact .tablet-contact-logo {
+    align-self: center;
+    flex: 0 0 auto;
+    width: min(220px, 70vw);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.85;
+    aspect-ratio: 488 / 690;
+    background: transparent url("./public/images/mobile-contact-logo.svg") center center / contain no-repeat;
+  }
+
+  .desktop .desktop-section-contact .desktop-contact-logo-img {
+    display: none;
+  }
+
+  .desktop .desktop-section-contact .section-header {
+    padding: 20px 0 0;
+    margin-top: 8px;
+  }
+
+  .desktop .desktop-section-contact .section-header .logoname {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+    padding: 0 0 24px;
+    box-sizing: border-box;
+  }
+
+  .desktop .desktop-section-contact .section-header .logoname .lgoo {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  .desktop .desktop-section-contact .section-header .logoname .gnb {
+    flex: 0 1 auto;
+    min-width: 0;
+    text-align: right;
+  }
+
+  .desktop .desktop-section-contact .section-header .contact-footer-email {
+    display: inline-block;
+    max-width: 100%;
+    word-break: break-all;
+    text-align: right;
+  }
+
+  .desktop .desktop-section-contact .section-header .contact-footer-copy,
+  .desktop .desktop-section-contact .section-header .contact-footer-email {
+    font-size: calc(11px + (16px - 11px) * var(--r768-390));
+    font-weight: 500;
+    line-height: calc(16px + (24px - 16px) * var(--r768-390));
+  }
+}

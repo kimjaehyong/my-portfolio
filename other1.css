@@ -1,0 +1,75 @@
+/* OTHER: Budweiser NY detail (other1.html) — black + Bud red accent, B-1..6 */
+
+.page-other1 {
+  background: #0d0d0d;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.page-other1 .desktop {
+  background: transparent;
+}
+
+.page-other1 .desktop-header .gnb-line {
+  filter: invert(1) brightness(1.05);
+}
+
+.page-other1 .desktop-header .logo-name,
+.page-other1 .desktop-header .gnb-link {
+  color: #ffffff;
+}
+
+.page-other1 .desktop-header .gnb-link:hover,
+.page-other1 .desktop-header .gnb-link:focus-visible {
+  color: #e4002b;
+}
+
+.page-other1 .desktop-header .logo-image {
+  filter: brightness(0) invert(1);
+}
+
+.page-other1 .header-menu-btn {
+  filter: brightness(0) invert(1);
+}
+
+.page-other1 .other1-main {
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  gap: 0;
+}
+
+/* GNB overlays B-1 hero — no gap above first slice */
+.page-other1 .desktop .desktop-main.other1-main > .desktop-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  min-height: 0;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: auto;
+}
+
+.page-other1 .desktop .desktop-main > .other1-detail-stack {
+  max-width: none;
+  width: 100vw;
+  margin-top: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #0d0d0d;
+}
+
+.page-other1 .other1-detail-img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}

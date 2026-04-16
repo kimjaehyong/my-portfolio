@@ -1,0 +1,2218 @@
+/*
+  tokens.json → responsive/Desktop
+  - 최대 레이아웃 1920px — .desktop { max-width: 1920px; width: 100% }, --scale-view 로 비율 축소
+  - 색·폭·폰트(px)·padding·gap·height·rotate 는 토큰 변수 사용
+  - position-* 토큰은 사용하지 않음 → top / left 는 Figma px 직접 기입
+  - 토큰에 없는 line-height·헤더 높이 등은 주석과 함께 :root 보조 변수로만 정의
+  - 폰트: Paperlogy — HTML에서 jsDelivr 스타일시트 링크 / Pretendard Variable — 아래 @font-face
+*/
+
+:root {
+  /* color */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray: #333333;
+  --color-accent-main: #1f7148;
+  --color-bg: #f4f1ee;
+  --color-bg-2: #ebe6e1;
+  --color-contact: #328c61;
+  --color-contact-logo: #359d69;
+  --color-read-bg: #1a1a1a;
+  --color-read-muted: rgba(255, 255, 255, 0.65);
+
+  /* Hero load motion (huncwot.com-like easing) */
+  --intro-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --intro-line-duration: 1s;
+  --intro-stagger: 0.12s;
+
+  /* width — 레이아웃 최대 1920 기준, 뷰포트에 맞게 축소 */
+  --layout-max: 1920px;
+  --width-container: 100%;
+  --width-container-inner: 100%;
+  /* min(100vw, 1920px) / 1920px — 1920 디자인 비율 유지 */
+  --scale-view: calc(min(100vw, 1920px) / 1920px);
+  /* About·Skill 타이포 — 100% 줌에서도 80% 줌처럼 읽히도록 clamp 상한·vw·본문을 ~0.8 배수로 완화 */
+  --type-about-skill-soft: 0.8;
+  /* About 하단 career / edu / project 열 — 브라우저 줌과 무관하게 동일 비율 유지(px·calc), 현재 대비 0.8배 */
+  --about-bottom-box-scale: 0.8;
+  /* WORK 좌측 project-box·우측 portfolio-list — 현재 대비 0.8배 */
+  --work-sidebar-scale: 0.8;
+  --width-header: 100%;
+  --width-section: 100%;
+  --width-section-inner: 100%;
+  --content-max: 1740px;
+  /* 1920 미만에서 본문 열이 뷰포트의 ~92.5%만 차지 → 좌우 숨통(80% 줌 느낌에 가깝게) */
+  --desktop-main-max: min(var(--layout-max), 92.5vw);
+  --width-gnb-line: 100%;
+  --width-gnb-logo: 325px;
+  --width-hero-img-layout: 742px;
+  --width-hero-img: 600px;
+
+  /* font (size, number) */
+  --font-hero-main-title: 210px;
+  --font-hero-main-title2: 140px;
+  --font-logo-naming: 36px;
+  --font-gnb: 32px;
+  /* GNB 링크 표시 크기 (요청 24px, tokens font-gnb 32와 별도) */
+  --font-gnb-link: 24px;
+  --line-height-gnb-link: 30px;
+
+  /* padding */
+  --padding-horizontal-logo: 18px;
+  --padding-top-logo: 9px;
+  --padding-top-hero: 0;
+  --padding-topbottom-gnb: 30px;
+
+  /* gap */
+  --gap-hero-main-title: 36px;
+  --gap-hero-gnb-menu: 24px;
+  --gap-hero-gnb: 16px;
+  /* gnb-line ↔ logoname 행 사이 (데스크톱·태블릿·모바일 동일) */
+  --gap-header-logoname-line: 16px;
+  /* 헤더 상단 ~ 라인까지 여백(라인을 살짝 아래로) */
+  --padding-top-header-line: 30px;
+
+  /* height */
+  --height-section-hero: 960px;
+
+  /* line-height — Desktop 토큰에 별도 키 없음, Figma 타이포 기준 */
+  --line-height-logo-naming: 40px;
+  --line-height-gnb: 38px;
+  --line-height-hero-main: 200px;
+  --line-height-hero-sub: 160px;
+  --font-scroll-down: 24px;
+  --line-height-scroll-down: 32px;
+
+  /* letter-spacing — Figma 기준 (토큰 미제공) */
+  --letter-spacing-hero-main: -4.2px;
+  --letter-spacing-hero-sub: -2.8px;
+
+  /* 헤더 영역 높이 — Figma 프레임 기준 (토큰 미제공) */
+  --height-desktop-header: 120px;
+
+  /* 히어로 타이틀 블록 높이 — Figma 기준 (토큰 미제공) */
+  --height-hero-title-wrap: 396px;
+
+  /* tokens.json — About (width-about-t&l 등 & 는 CSS에서 \26 로 이스케이프) */
+  --width-about-line: 1440px;
+  --width-about-t\26l: 609px;
+  --font-about-main-title: 40px;
+  --font-about-content: 24px;
+  --font-about-personal: 16px;
+  --font-about-career: 18px;
+  --padding-top-about: 200px;
+  --padding-bottom-about: 100px;
+  --gap-about-title: 24px;
+  --gap-about-content: 16px;
+  --gap-about-logo: 24px;
+  --gap-about-content2: 24px;
+  --gap-about-t\26l: 230px;
+  --gap-about-t\26p: 214px;
+  --gap-about-content0: 50px;
+  --height-section-about: 1194px;
+  --height-section-about-inner: 890px;
+  --height-section-about-inner1: 618px;
+  --height-section-about-inner2: 176px;
+
+  /* About line-height — Desktop 토큰에 별도 키 없음 */
+  --line-height-about-main-title: 52px;
+  --line-height-about-content: 36px;
+  --line-height-about-personal: 22px;
+  --line-height-about-career: 27px;
+
+  /* About 좌우 인셋 — Figma desktop-section-about / about-top·about-bottom 기준 (desktop-inner x=90, 본문 x=240 → 150) */
+  --padding-horizontal-about: 150px;
+  /* about-id photo 프레임 — Figma 절대박스 617×617 (MCP get_node_info, Desktop-about.svg clip 일치) */
+  --size-about-id-photo: 617px;
+  /* About 프로필 이미지 라운드 — 요청값 (radius-skill-text 80 대체) */
+  --radius-about-photo: 40px;
+  /* 하단 섹션 타이틀 배지 — 요청값 */
+  --width-career-edu-title: 100px;
+  --width-project-title: 120px;
+  --height-about-column-title: 40px;
+  --radius-about-column-title: 8px;
+  /* logo-box — 요청값 (tokens.json 키 없음, 로고↔링크 24px는 gap-about-logo 토큰과 동일) */
+  --size-about-logo: 84px;
+  --gap-about-personal-logo: 8px;
+  --width-page-move: 228px;
+
+  /* tokens.json — Skill (responsive/Desktop) */
+  --width-skill-icon1: 99px;
+  --width-skill-icon2: 148px;
+  --width-skill-icon3: 144px;
+  --width-skill-icon4: 150px;
+  --width-skill-icon5: 157px;
+  --width-skill-icon6: 126px;
+  --width-skill-icon7: 157px;
+  --width-skill-icon8: 183px;
+  --font-skill-category: 92px;
+  --padding-top-skill: 160px;
+  --padding-bottom-skill: 240px;
+  --radius-skill-text: 80px;
+  --rotate-skill-branding: 5deg;
+  --rotate-skill-gen: -3deg;
+  --rotate-skill-vibe: 3deg;
+  --rotate-skill-web: -4deg;
+  --rotate-skill-uiux: 0deg;
+  /* rotate-skill-figma,blender */
+  --rotate-skill-figma-blender: 20deg;
+  --rotate-skill-photoshop: -10deg;
+  --rotate-skill-illu: 15deg;
+  /* rotate-skill-mid,anti */
+  --rotate-skill-mid-anti: 0deg;
+  --rotate-skill-after: 12deg;
+
+  /* Skill 프레임 높이·텍스트 박스·아이콘 높이 — Figma MCP(desktop-section-skill), position-* 토큰 미사용·좌표는 아래 블록 리터럴 px */
+  --height-section-skill: 1479px;
+  --height-skill-inner: 1079px;
+  --width-skill-text-01: 429px;
+  --width-skill-text-02: 646px;
+  --width-skill-text-03: 812px;
+  --width-skill-text-04: 740px;
+  --width-skill-text-05: 587px;
+  /* skill-text-01~05 공통 높이 — 요청 140px */
+  --height-skill-text: 140px;
+  --height-skill-icon1: 99px;
+  --height-skill-icon2: 176px;
+  --height-skill-icon3: 160px;
+  --height-skill-icon4: 150px;
+  --height-skill-icon5: 173px;
+  --height-skill-icon6: 143px;
+  --height-skill-icon7: 147px;
+  --height-skill-icon8: 168px;
+  --line-height-skill-category: 96px;
+
+  /* tokens.json — Work / Team project (responsive/Desktop) */
+  --width-project-box: 369px;
+  --width-work-cover: 885px;
+  /* WORK·섹션 대제목 상한 — CONTACT 제목과 동일 최대 77px */
+  --font-title: 77px;
+  --font-work-category: 20px;
+  /* project-box 내 프로젝트명 (Project 아래) */
+  --font-work-project-box-content: 48px;
+  --line-height-work-project-box-content: 56px;
+  /* portfolio-list: Period 값·Service 본문 */
+  --font-work-portfolio-content: 34px;
+  --line-height-work-portfolio-content: 42px;
+  --font-work-sub-title: 28px;
+  --font-work-category-content: 24px;
+  --padding-top-work: 120px;
+  --padding-bottom-work: 120px;
+  --gap-work-title: 24px;
+  --gap-work-project-box: 24px;
+  --gap-work-project-list: 48px;
+  --gap-work-project-content: 36px;
+  --gap-work-project-content2: 0px;
+  --height-project-list: 589px;
+  /* Figma desktop-section-work 프레임 높이 — 토큰 없음 */
+  --height-section-work: 5099px;
+  --height-work-heading: 100px;
+  /* CONTACT .contact-section-title line-height clamp 상한과 동일 */
+  --line-height-work-title: 100px;
+  --line-height-work-label: 24px;
+  --line-height-work-body: 32px;
+  /* Figma MCP(work-img Rectangle) cornerRadius 30 — position 토큰 미사용 */
+  --radius-work-cover: 30px;
+  /* (레거시) 서브타이틀 라인 — project-box 제목은 line-height-work-project-box-content 사용 */
+  --line-height-work-sub-title: 32px;
+  /* Role pill 고정 폭(숫자) — Figma / 요청 스펙, calc(N * 1px * scale-view) */
+  --width-work-role-pill-planning: 240;
+  --width-work-role-pill-planning-design: 213;
+  --width-work-role-pill-ux-research: 147;
+  --width-work-role-pill-design-system: 168;
+  --width-work-role-pill-branding: 128;
+  /* Work 툴·역할 pill — tokens.json 키 없음, Figma pill 프레임 */
+  --height-work-pill: 40px;
+  --radius-work-pill: 12px;
+  --line-height-work-pill: 40px;
+  --line-height-work-pill-text: 24px;
+
+  /* tokens.json — Contact (Desktop) */
+  --width-contact: 100%;
+  --width-contact-line: 396px;
+  --width-contact-logo: 488px;
+  --width-contact-content: 740px;
+  --font-contact-subtitle: 48px;
+  --font-contact-subtitle-content: 30px;
+  --font-contact-subtitle-email: 24px;
+  --padding-top-contact: 108px;
+  --padding-side-contact: 90px;
+  --gap-contact-content1: 24px;
+  --gap-contact-content2: 64px;
+  --gap-contact-content3: 512px;
+  --gap-contact-content4: 16px;
+  --gap-contact-content5: 0px;
+  --gap-contact-gnb: 16px;
+  /* Figma desktop-section-contact — MCP read_my_design, position-* 토큰 미사용 */
+  --height-section-contact: 1050px;
+  --height-section-contact-middle: 690px;
+  --height-section-contact-footer: 120px;
+  --line-height-contact-heading: 100px;
+  --line-height-contact-subtitle: 73px;
+  --line-height-contact-body: 53px;
+  --line-height-contact-email: 48px;
+  --line-height-contact-footer: 40px;
+}
+
+@font-face {
+  font-family: "Pretendard Variable";
+  font-style: normal;
+  font-weight: 45 920;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/woff2/PretendardVariable.woff2")
+    format("woff2");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-width: 0;
+  max-width: 100%;
+  background: var(--color-bg);
+  color: var(--color-gray);
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ninno.space류: mouse-point.svg — 포인터 디바이스에서만 (끝점 ≈ viewBox 상단 중앙) */
+@media (pointer: fine) {
+  body {
+    cursor: url("./public/images/mouse-point.svg") 34 0, auto;
+  }
+
+  a,
+  button,
+  label[for],
+  summary,
+  input[type="submit"],
+  input[type="button"] {
+    cursor: url("./public/images/mouse-point.svg") 34 0, auto;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="url"],
+  input[type="tel"],
+  textarea,
+  select,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+
+  /* WORK cover hover: hide custom mouse-point cursor; POINT-WORK is the only pointer cue */
+  .desktop .desktop-section-teamproject .work-cover:hover,
+  .desktop .desktop-section-teamproject .work-cover:hover * {
+    cursor: none !important;
+  }
+}
+
+/* 이미지·SVG가 레이아웃을 넘지 않도록 (히어로 등 예외는 아래에서 보정) */
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.desktop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, var(--layout-max));
+  max-width: var(--layout-max);
+  min-width: 0;
+  margin: 0 auto;
+  background: var(--color-bg);
+}
+
+/* 모든 섹션 래퍼: 세로 스택 + 가로 중앙, 뷰포트 대비 90~95% 폭으로 숨통 */
+.desktop .desktop-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, var(--desktop-main-max));
+  max-width: var(--desktop-main-max);
+  min-width: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* 본문 1740 열: main 안의 섹션만 — Contact는 main 밖에 두어 Figma 전체 폭 그린 밴드 유지 */
+.desktop .desktop-main > * {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Contact / Other / Read: desktop 직계 — .desktop-main(92.5vw 열) 규칙 미적용 */
+.desktop > .desktop-section-contact,
+.desktop > .desktop-section-other,
+.desktop > .desktop-section-read {
+  align-self: stretch;
+  width: min(100%, var(--layout-max));
+  max-width: var(--layout-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- desktop-section-other (WORK ↔ CONTACT) ---------- */
+
+.desktop .desktop-section-other {
+  width: 100%;
+  max-width: var(--layout-max);
+  padding-bottom: 123px;
+  box-sizing: border-box;
+  background: var(--color-bg);
+}
+
+.desktop .desktop-section-other .other-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: var(--layout-max);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-other .other-line-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 0 32px;
+}
+
+.desktop .desktop-section-other .line-other {
+  display: block;
+  width: 1px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+/* work-section-title과 동일 타이포 (--font-title, Paperlogy 800) */
+.desktop .desktop-section-other .other-title {
+  margin: 0 0 64px;
+  width: 100%;
+  text-align: center;
+  font-family: Paperlogy, "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: var(--font-title);
+  font-weight: 800;
+  line-height: var(--font-title);
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.desktop .desktop-section-other .other-section2 {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  width: 1740px;
+  max-width: calc(100% - 180px);
+  margin-left: 90px;
+  margin-right: 90px;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-other .other-section2-img-p1,
+.desktop .desktop-section-other .other-section2-img-p2 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 11px;
+  row-gap: 0;
+  width: 100%;
+  align-items: start;
+}
+
+.desktop .desktop-section-other .other-work-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: calc(var(--radius-work-cover) * var(--scale-view));
+  overflow: hidden;
+  line-height: 0;
+}
+
+.desktop .desktop-section-other .other-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.desktop .desktop-section-other .other-img-hover {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+@media (hover: hover) {
+  .desktop .desktop-section-other .other-work-detail-link:hover .other-img-hover {
+    opacity: 1;
+  }
+}
+
+.desktop .desktop-section-other .other-work-detail-link:focus-visible .other-img-hover {
+  opacity: 1;
+}
+
+.desktop .desktop-section-other .other-work-detail-link {
+  display: block;
+  width: 100%;
+  line-height: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.desktop .desktop-section-other .other-work-detail-link:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 4px;
+  border-radius: calc(var(--radius-work-cover) * var(--scale-view));
+}
+
+/* ---------- desktop-section-read (OTHER ↔ CONTACT) — 다크 Read & Think ---------- */
+
+.desktop .desktop-section-read {
+  width: 100%;
+  max-width: var(--layout-max);
+  margin: 0 auto;
+  padding: calc(100px * var(--scale-view)) calc(90px * var(--scale-view)) calc(120px * var(--scale-view));
+  box-sizing: border-box;
+  background: var(--color-read-bg);
+}
+
+.desktop .desktop-section-read .read-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(40px, 5vw, 80px);
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-read .read-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 1 auto;
+  max-width: min(420px, 100%);
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-read .read-text-box-title {
+  margin: 0;
+  font-family: Paperlogy, "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 77px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.desktop .desktop-section-read .read-text-box-desc {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.desktop .desktop-section-read .read-text-box-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 160px;
+  height: 60px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 12px;
+  background: var(--color-white);
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-black);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.desktop .desktop-section-read .read-text-box-button:hover {
+  background-color: #4db17f;
+  color: var(--color-white);
+}
+
+.desktop .desktop-section-read .read-text-box-button:focus-visible {
+  outline: 2px solid #4db17f;
+  outline-offset: 3px;
+}
+
+.desktop .desktop-section-read .read-text-box-button-label {
+  display: block;
+}
+
+/* 리스트는 read-carousel-wrap 안 — 데스크톱·태블릿은 세로 리스트, 모바일만 가로 스크롤은 responsive.css */
+.desktop .desktop-section-read .read-carousel-wrap {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-read .read-carousel-viewport {
+  overflow: visible;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-read .read-section-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: none;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-read .read-carousel-slide {
+  width: 100%;
+  list-style: none;
+}
+
+.desktop .desktop-section-read .read-pagination {
+  display: none;
+}
+
+.desktop .desktop-section-read .read-more--mobile {
+  display: none;
+}
+
+.desktop .desktop-section-read .read-section-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: clamp(24px, 2.5vw, 40px);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-read .read-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.desktop .desktop-section-read .read-card-link:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* 이미지 열과 텍스트 열(read-img-text) 세로 중앙 정렬 */
+.desktop .desktop-section-read .read-section-item.align-vertical-center {
+  align-items: center;
+}
+
+.desktop .desktop-section-read .read-img {
+  display: block;
+  flex-shrink: 0;
+  width: min(500px, 100%);
+  height: auto;
+  aspect-ratio: 5 / 3;
+  border-radius: 16px;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-read .read-img-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 60px;
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-read .read-title-block {
+  width: 100%;
+  min-width: 0;
+}
+
+.desktop .desktop-section-read .read-title {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.desktop .desktop-section-read .read-title-cate {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  width: 100%;
+}
+
+.desktop .desktop-section-read .read-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--color-white);
+  background: transparent;
+}
+
+.desktop .desktop-section-read .read-date {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--color-read-muted);
+}
+
+/* ---------- desktop-header ---------- */
+
+/* 가로: desktop-main > * 의 content-max 열 전체 폭 사용 (section-inner와 동일 — 열 안을 또 90px로 좁히지 않음) */
+.desktop .desktop-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: var(--height-desktop-header);
+  height: auto;
+  padding: var(--padding-top-header-line) 0 0;
+  gap: var(--gap-header-logoname-line);
+  box-sizing: border-box;
+}
+
+.desktop .desktop-header .logoname {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  flex: 0 0 auto;
+  min-height: 0;
+  padding-top: 0;
+}
+
+.desktop .desktop-header .desktop-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-hero-gnb);
+  width: var(--width-gnb-logo);
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: var(--padding-horizontal-logo);
+}
+
+.desktop .desktop-header .logo-image {
+  width: auto;
+  max-width: 100%;
+  height: clamp(28px, 2.0833vw, 40px);
+  max-height: clamp(28px, 2.0833vw, 40px);
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.desktop .desktop-header .logo-name {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(22px, 1.875vw, 36px);
+  font-weight: 600;
+  line-height: clamp(28px, 2.0833vw, 40px);
+  letter-spacing: 0;
+  color: var(--color-black);
+  white-space: nowrap;
+}
+
+.desktop .desktop-header .gnb {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--gap-hero-gnb-menu);
+  padding-right: var(--padding-horizontal-logo);
+}
+
+.desktop .desktop-header .gnb-link {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 400;
+  line-height: clamp(22px, 1.5625vw, 30px);
+  letter-spacing: 0;
+  color: var(--color-black);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.desktop .desktop-header .gnb-link:hover,
+.desktop .desktop-header .gnb-link:focus-visible {
+  color: #1f7148;
+}
+
+/* 라인: 왼쪽은 hero-inner·타이틀과 동일(0), 오른쪽은 GNB와 맞춤 */
+/* Desktop/tablet: GNB links stagger L→R with header line */
+@media (min-width: 769px) {
+  .desktop .desktop-header .gnb-link {
+    opacity: 0;
+    animation: heroGnbLinkIn 0.65s var(--intro-ease) both;
+  }
+
+  .desktop .desktop-header .gnb-link:nth-child(1) {
+    animation-delay: 0.38s;
+  }
+
+  .desktop .desktop-header .gnb-link:nth-child(2) {
+    animation-delay: calc(0.38s + var(--intro-stagger));
+  }
+
+  .desktop .desktop-header .gnb-link:nth-child(3) {
+    animation-delay: calc(0.38s + var(--intro-stagger) * 2);
+  }
+}
+
+.desktop .desktop-header .gnb-line-wrap {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 0 var(--padding-horizontal-logo) 0 0;
+  box-sizing: border-box;
+  clip-path: inset(0 100% 0 0);
+  animation: heroGnbLineDraw var(--intro-line-duration) var(--intro-ease) forwards;
+}
+
+.desktop .desktop-header .gnb-line {
+  width: 100%;
+  height: auto;
+  min-height: 2px;
+  display: block;
+  object-fit: fill;
+}
+
+.desktop .desktop-header .desktop-logo-link {
+  text-decoration: none;
+  color: inherit;
+  animation: heroLogoIn 0.85s var(--intro-ease) 0.08s both;
+}
+
+.desktop .desktop-header .desktop-logo-link:focus-visible {
+  outline: 2px solid var(--color-accent-main);
+  outline-offset: 4px;
+}
+
+/* ---------- desktop-section-hero ---------- */
+
+.desktop .desktop-section-hero {
+  width: 100%;
+  max-width: var(--content-max);
+  height: clamp(480px, 50vw, 960px);
+  padding-top: var(--padding-top-hero);
+}
+
+/* content-max 열 전체 폭 — 헤더와 동일 열(추가 좌우 마진 없음) */
+.desktop .desktop-section-hero .hero-inner {
+  position: relative;
+  width: 100%;
+  height: clamp(480px, 50vw, 960px);
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-hero .hero-title-wrap {
+  position: absolute;
+  top: calc(282px * var(--scale-view));
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(20px, 1.458vw, 28px);
+  width: 100%;
+  height: auto;
+  max-height: calc(396px * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-hero .hero-title-main {
+  margin: 0;
+  font-family: Paperlogy, "Pretendard Variable", Pretendard, sans-serif;
+  font-size: clamp(72px, 10.9375vw, 210px);
+  font-weight: 800;
+  line-height: clamp(68px, 10.4167vw, 200px);
+  letter-spacing: calc(-4.2px * var(--scale-view));
+  color: var(--color-accent-main);
+  opacity: 0;
+  animation: heroTitleRise 1.05s var(--intro-ease) 0.32s both;
+}
+
+.desktop .desktop-section-hero .hero-title-sub {
+  margin: 0;
+  font-family: Paperlogy, "Pretendard Variable", Pretendard, sans-serif;
+  font-size: clamp(48px, 7.2917vw, 140px);
+  font-weight: 800;
+  line-height: clamp(52px, 8.3333vw, 160px);
+  letter-spacing: calc(-2.8px * var(--scale-view));
+  color: transparent;
+  -webkit-text-stroke: calc(3px * var(--scale-view)) var(--color-accent-main);
+  opacity: 0;
+  animation: heroTitleRise 1.05s var(--intro-ease) 0.46s both;
+}
+
+.desktop .desktop-section-hero .hero-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+  width: min(742px, 38.65vw);
+  height: clamp(480px, 50vw, 960px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  opacity: 0;
+  animation: heroImageRise 1.2s var(--intro-ease) 0.18s both;
+}
+
+.desktop .desktop-section-hero .hero-img-visual {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.desktop .desktop-section-hero .scroll-down {
+  position: absolute;
+  top: calc(885px * var(--scale-view));
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 32px);
+  margin: 0;
+  text-align: center;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(18px, 1.25vw, 24px);
+  font-weight: 400;
+  line-height: clamp(24px, 1.6667vw, 32px);
+  letter-spacing: 0;
+  color: var(--color-black);
+  opacity: 0;
+  animation: heroScrollFadeIn 0.85s var(--intro-ease) 0.95s both;
+}
+
+@keyframes heroGnbLineDraw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes heroLogoIn {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroGnbLinkIn {
+  from {
+    opacity: 0;
+    transform: translateX(-1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroTitleRise {
+  from {
+    opacity: 0;
+    transform: translateY(2.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroImageRise {
+  from {
+    opacity: 0;
+    transform: translateY(4.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScrollFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop .desktop-header .gnb-line-wrap,
+  .desktop .desktop-header .desktop-logo-link,
+  .desktop .desktop-section-hero .hero-img,
+  .desktop .desktop-section-hero .hero-title-main,
+  .desktop .desktop-section-hero .hero-title-sub {
+    animation: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .desktop .desktop-section-hero .scroll-down {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  @media (min-width: 769px) {
+    .desktop .desktop-header .gnb-link {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+}
+
+/* ---------- desktop-section-about ----------
+   Figma 레이어명·간격: MCP get_node_info(Desktop 프레임) + Desktop-about.svg(1920×1479) 교차 확인
+   - about-top 좌우 150px, 텍스트↔이미지 gap = gap-about-t&p(214)
+   - 레이어명 오타 sub-tltle 은 Figma와 동일 유지 */
+
+.desktop .desktop-section-about {
+  width: 100%;
+  max-width: var(--content-max);
+  min-height: calc(1194px * var(--scale-view));
+  padding-top: calc(200px * var(--scale-view));
+  padding-bottom: calc(100px * var(--scale-view));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  background: var(--color-bg);
+}
+
+.desktop .desktop-section-about .about-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: var(--gap-about-content0);
+  width: 100%;
+  max-width: var(--content-max);
+  min-height: calc(890px * var(--scale-view));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Figma: about-top — 좌우 padding-horizontal-about, 텍스트↔사진 gap 은 gap-about-t&p(214) */
+.desktop .desktop-section-about .about-top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: calc(214px * var(--scale-view));
+  row-gap: calc(40px * var(--scale-view));
+  min-height: calc(618px * var(--scale-view));
+  flex-shrink: 0;
+  width: 100%;
+  padding-left: calc(150px * var(--scale-view));
+  padding-right: calc(150px * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-about .about-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: min(calc(609px * var(--scale-view)), 100%);
+  min-height: calc(618px * var(--scale-view));
+  text-align: left;
+}
+
+.desktop .desktop-section-about .section-text-box {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: var(--gap-about-title);
+  width: 100%;
+  text-align: left;
+}
+
+.desktop .desktop-section-about .logo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin-top: auto;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.desktop .desktop-section-about .about-logo-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.desktop .desktop-section-about .about-logo-title-link:focus-visible {
+  outline: 2px solid var(--color-accent-main);
+  outline-offset: 4px;
+}
+
+.desktop .desktop-section-about .logo-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-about-personal-logo);
+  align-items: flex-start;
+}
+
+.desktop .desktop-section-about .sub-tltle {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  /* 두 번째 줄 '…디자이너입니다' 가 입↔니다 에서 끊기지 않도록 살짝 축소 */
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 57px;
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+/* sub-tltle 두 번째 문장·sub-text 의 '디자이너입니다' 등 한 덩어리 줄바꿈 방지 */
+.desktop .desktop-section-about .section-text-box .about-text-nowrap {
+  white-space: nowrap;
+}
+
+/* 본문 중 '문제를…' 단락 — Pretendard 24 regular → 큰 화면에서도 과대 방지 */
+.desktop .desktop-section-about .section-text-box .sub-text {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-about-content) * var(--type-about-skill-soft));
+  font-weight: 400;
+  line-height: calc(var(--line-height-about-content) * var(--type-about-skill-soft));
+  letter-spacing: 0;
+  color: var(--color-gray);
+}
+
+.desktop .desktop-section-about .about-personal-label {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: var(--font-about-personal);
+  font-weight: 400;
+  line-height: var(--line-height-about-personal);
+  letter-spacing: 0;
+  color: var(--color-gray);
+}
+
+.desktop .desktop-section-about .about-logo {
+  display: block;
+  width: var(--size-about-logo);
+  height: var(--size-about-logo);
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.desktop .desktop-section-about .about-logo-bg {
+  transition: fill 0.2s ease;
+}
+
+@media (hover: hover) {
+  .desktop .desktop-section-about .about-logo-title-link:hover .about-logo-bg {
+    fill: #4db17f;
+  }
+}
+
+.desktop .desktop-section-about .about-logo-title-link:focus-visible .about-logo-bg {
+  fill: #4db17f;
+}
+
+.desktop .desktop-section-about .about-brand-link {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: var(--font-about-career);
+  font-weight: 400;
+  line-height: var(--line-height-about-career);
+  letter-spacing: 0;
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+.desktop .desktop-section-about .logo-box .page-move {
+  box-sizing: border-box;
+  width: var(--width-page-move);
+  margin-top: var(--gap-about-logo);
+}
+
+.desktop .desktop-section-about .about-id-photo {
+  flex: 0 0 auto;
+  width: min(calc(617px * var(--scale-view)), 45vw);
+  height: min(calc(617px * var(--scale-view)), 45vw);
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  border-radius: calc(40px * var(--scale-view));
+}
+
+.desktop .desktop-section-about .about-profile-img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+}
+
+.desktop .desktop-section-about .about-line {
+  width: min(calc(1440px * var(--scale-view)), 100%);
+  max-width: 100%;
+  height: 0;
+  margin: 0 auto;
+  flex-shrink: 0;
+  border: none;
+  border-top: 1px solid var(--color-bg-2);
+}
+
+.desktop .desktop-section-about .about-bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-height: calc(176px * var(--scale-view));
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: calc(150px * var(--scale-view));
+  padding-right: calc(150px * var(--scale-view));
+  text-align: left;
+}
+
+.desktop .desktop-section-about .career-box,
+.desktop .desktop-section-about .edu-box,
+.desktop .desktop-section-about .project-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  gap: calc(var(--gap-about-content) * var(--about-bottom-box-scale));
+  padding: 0 calc(var(--gap-about-title) * var(--about-bottom-box-scale));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-about .career-box {
+  padding-left: 0;
+}
+
+.desktop .desktop-section-about .project-box {
+  gap: 0;
+  padding-right: 0;
+}
+
+.desktop .desktop-section-about .project-box-top {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap-about-content) * var(--about-bottom-box-scale));
+}
+
+.desktop .desktop-section-about .edu-box,
+.desktop .desktop-section-about .project-box {
+  border-left: 1px solid var(--color-bg-2);
+}
+
+.desktop .desktop-section-about .career-title,
+.desktop .desktop-section-about .edu-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  box-sizing: border-box;
+  width: calc(var(--width-career-edu-title) * var(--about-bottom-box-scale));
+  height: calc(var(--height-about-column-title) * var(--about-bottom-box-scale));
+  border-radius: calc(var(--radius-about-column-title) * var(--about-bottom-box-scale));
+  background: var(--color-black);
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-about-career) * var(--about-bottom-box-scale));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.desktop .desktop-section-about .project-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  box-sizing: border-box;
+  width: calc(var(--width-project-title) * var(--about-bottom-box-scale));
+  height: calc(var(--height-about-column-title) * var(--about-bottom-box-scale));
+  border-radius: calc(var(--radius-about-column-title) * var(--about-bottom-box-scale));
+  background: var(--color-black);
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-about-career) * var(--about-bottom-box-scale));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.desktop .desktop-section-about .edu-text {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap-about-content) * var(--about-bottom-box-scale));
+}
+
+.desktop .desktop-section-about .career-text,
+.desktop .desktop-section-about .edu-list,
+.desktop .desktop-section-about .project-text {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-about-career) * var(--about-bottom-box-scale));
+  font-weight: 400;
+  line-height: calc(var(--line-height-about-career) * var(--about-bottom-box-scale));
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+/* 날짜·기간: 18 regular */
+.desktop .desktop-section-about .about-line-date {
+  font-size: calc(var(--font-about-career) * var(--about-bottom-box-scale));
+  font-weight: 400;
+  color: var(--color-gray);
+}
+
+/* 오른쪽 한글 설명: 18 semibold */
+.desktop .desktop-section-about .about-line-desc {
+  margin-left: calc(var(--gap-about-content) * var(--about-bottom-box-scale));
+  font-size: calc(var(--font-about-career) * var(--about-bottom-box-scale));
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.desktop .desktop-section-about .about-intro-more {
+  margin-top: auto;
+  align-self: flex-end;
+  display: inline-flex;
+  justify-content: flex-end;
+  width: var(--width-page-move);
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: var(--font-about-career);
+  font-weight: 400;
+  line-height: var(--line-height-about-career);
+  letter-spacing: 0;
+  color: var(--color-black);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .desktop .desktop-section-about .about-intro-more:hover {
+    color: #4db17f;
+    transform: translateX(6px);
+  }
+}
+
+.desktop .desktop-section-about .about-intro-more:focus-visible {
+  color: #4db17f;
+  transform: translateX(6px);
+}
+
+/* ---------- desktop-section-skill ----------
+   Figma: MCP desktop-section-skill / skill-inner
+   - top·left 는 tokens.json position 값을 var() 없이 px 리터럴로 반영(사용자 규칙: position-* 변수 미사용)
+   - Desktop-about.svg 참고는 동일 데스크톱 아트보드 배경색(#F4F1EE)과 섹션 연속성만 해당 */
+
+.desktop .desktop-section-skill {
+  width: 100%;
+  max-width: var(--content-max);
+  min-height: calc(1479px * var(--scale-view));
+  padding-top: calc(160px * var(--scale-view));
+  padding-bottom: calc(240px * var(--scale-view));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  background: var(--color-bg);
+}
+
+.desktop .desktop-section-skill .skill-inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--content-max);
+  min-height: calc(1079px * var(--scale-view));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-skill .skill-icon-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.desktop .desktop-section-skill .skill-icon1 {
+  position: absolute;
+  left: calc(262px * var(--scale-view));
+  top: calc(136px * var(--scale-view));
+  width: calc(var(--width-skill-icon1) * var(--scale-view));
+  height: calc(var(--height-skill-icon1) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-figma-blender));
+  transform-origin: center;
+}
+
+.desktop .desktop-section-skill .skill-icon2 {
+  position: absolute;
+  left: calc(1368px * var(--scale-view));
+  top: calc(147px * var(--scale-view));
+  width: calc(var(--width-skill-icon2) * var(--scale-view));
+  height: calc(var(--height-skill-icon2) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-photoshop));
+  transform-origin: center;
+}
+
+.desktop .desktop-section-skill .skill-icon3 {
+  position: absolute;
+  left: calc(216px * var(--scale-view));
+  top: calc(442px * var(--scale-view));
+  width: calc(var(--width-skill-icon3) * var(--scale-view));
+  height: calc(var(--height-skill-icon3) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-illu));
+  transform-origin: center;
+}
+
+.desktop .desktop-section-skill .skill-icon4 {
+  position: absolute;
+  left: calc(1369px * var(--scale-view));
+  top: calc(542px * var(--scale-view));
+  width: calc(var(--width-skill-icon4) * var(--scale-view));
+  height: calc(var(--height-skill-icon4) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-mid-anti));
+  transform-origin: center;
+}
+
+.desktop .desktop-section-skill .skill-icon5 {
+  position: absolute;
+  left: calc(262px * var(--scale-view));
+  top: calc(809px * var(--scale-view));
+  width: calc(var(--width-skill-icon5) * var(--scale-view));
+  height: calc(var(--height-skill-icon5) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-after));
+  transform-origin: center;
+}
+
+.desktop .desktop-section-skill .skill-icon6 {
+  position: absolute;
+  left: calc(1316px * var(--scale-view));
+  top: calc(839px * var(--scale-view));
+  width: calc(var(--width-skill-icon6) * var(--scale-view));
+  height: calc(var(--height-skill-icon6) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-mid-anti));
+  transform-origin: center;
+}
+
+.desktop .desktop-section-skill .skill-icon7 {
+  position: absolute;
+  left: calc(611px * var(--scale-view));
+  top: calc(898px * var(--scale-view));
+  width: calc(var(--width-skill-icon7) * var(--scale-view));
+  height: calc(var(--height-skill-icon7) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-mid-anti));
+  transform-origin: center;
+}
+
+.desktop .desktop-section-skill .skill-icon8 {
+  position: absolute;
+  left: calc(980px * var(--scale-view));
+  top: calc(911px * var(--scale-view));
+  width: calc(var(--width-skill-icon8) * var(--scale-view));
+  height: calc(var(--height-skill-icon8) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-mid-anti));
+  transform-origin: center;
+}
+
+.desktop .desktop-section-skill .skill-text-01,
+.desktop .desktop-section-skill .skill-text-02,
+.desktop .desktop-section-skill .skill-text-03,
+.desktop .desktop-section-skill .skill-text-04,
+.desktop .desktop-section-skill .skill-text-05 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: calc(var(--height-skill-text) * var(--scale-view));
+  border-radius: calc(var(--radius-skill-text) * var(--scale-view));
+  background: var(--color-white);
+  border: 1px solid var(--color-black);
+  transform-origin: center;
+  z-index: 1;
+}
+
+.desktop .desktop-section-skill .skill-text-label {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(
+    calc(48px * var(--type-about-skill-soft)),
+    calc(4.7917vw * var(--type-about-skill-soft)),
+    calc(92px * var(--type-about-skill-soft))
+  );
+  font-weight: 400;
+  line-height: clamp(
+    calc(50px * var(--type-about-skill-soft)),
+    calc(5vw * var(--type-about-skill-soft)),
+    calc(96px * var(--type-about-skill-soft))
+  );
+  letter-spacing: 0;
+  color: var(--color-black);
+  text-align: center;
+}
+
+.desktop .desktop-section-skill .skill-text-01 {
+  left: calc(656px * var(--scale-view));
+  top: 0;
+  width: calc(var(--width-skill-text-01) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-uiux));
+}
+
+.desktop .desktop-section-skill .skill-text-02 {
+  left: calc(547px * var(--scale-view));
+  top: calc(110px * var(--scale-view));
+  width: calc(var(--width-skill-text-02) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-branding));
+}
+
+.desktop .desktop-section-skill .skill-text-03 {
+  left: calc(463px * var(--scale-view));
+  top: calc(284px * var(--scale-view));
+  width: calc(var(--width-skill-text-03) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-gen));
+}
+
+.desktop .desktop-section-skill .skill-text-04 {
+  left: calc(500px * var(--scale-view));
+  top: calc(463px * var(--scale-view));
+  width: calc(var(--width-skill-text-04) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-vibe));
+}
+
+.desktop .desktop-section-skill .skill-text-05 {
+  left: calc(575px * var(--scale-view));
+  top: calc(640px * var(--scale-view));
+  width: calc(var(--width-skill-text-05) * var(--scale-view));
+  transform: rotate(var(--rotate-skill-web));
+}
+
+/* ---------- desktop-section-teamproject ----------
+   HTML 클래스명 유지 · Figma 레이어 desktop-section-work(MCP 252:3776) 1:1
+   - 가로: project-box(369) + gap-work-project-content(36) + work-cover(885) + 36 + portfolio-list
+   - 타이포·pill·라운드: Figma TEXT/FRAME + tokens.json (--font-work-*, --gap-work-*, --height-work-pill)
+   - position-* Variables 미사용 */
+
+.desktop .desktop-section-teamproject {
+  width: 100%;
+  max-width: var(--content-max);
+  min-height: calc(var(--height-section-work) * var(--scale-view));
+  padding-bottom: calc(var(--padding-bottom-work) * var(--scale-view));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  background: var(--color-bg);
+}
+
+/* WORK: 77px 고정 — 768~1024 태블릿은 responsive.css 가 덮어씀 */
+.desktop .desktop-section-teamproject .work-section-title {
+  margin: 0 0 var(--gap-work-title);
+  min-height: var(--height-work-heading);
+  font-family: Paperlogy, "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: var(--font-title);
+  font-weight: 800;
+  line-height: var(--font-title);
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.desktop .desktop-section-teamproject .project-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-section {
+  padding-top: calc(var(--padding-top-work) * var(--scale-view));
+  padding-bottom: calc(var(--padding-bottom-work) * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-section-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  column-gap: calc(var(--gap-work-project-content) * var(--scale-view));
+  row-gap: calc(var(--gap-work-project-content) * var(--scale-view));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-box {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: calc(var(--gap-work-project-box) * var(--scale-view));
+  width: calc(var(--width-project-box) * var(--scale-view));
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-title {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-work-category) * 1px * var(--scale-view));
+  font-weight: 400;
+  line-height: calc(var(--line-height-work-label) * 1px * var(--scale-view));
+  letter-spacing: 0;
+  color: var(--color-gray);
+}
+
+/* project-box: Project 라벨 아래 프로젝트명 40px */
+.desktop .desktop-section-teamproject .project-content {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-work-project-box-content) * 1px * var(--scale-view));
+  font-weight: 600;
+  line-height: calc(var(--line-height-work-project-box-content) * 1px * var(--scale-view));
+  letter-spacing: 0;
+  color: var(--color-black);
+  white-space: nowrap;
+}
+
+.desktop .desktop-section-teamproject .work-cover {
+  position: relative;
+  flex-shrink: 0;
+  width: min(calc(var(--width-work-cover) * var(--scale-view)), 52%);
+  height: calc(var(--height-project-list) * var(--scale-view));
+  overflow: hidden;
+  border-radius: calc(var(--radius-work-cover) * var(--scale-view));
+  background: var(--color-bg-2);
+}
+
+.desktop .desktop-section-teamproject a.work-cover {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .work-cover-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+  transition: transform 0.45s var(--intro-ease);
+}
+
+.desktop .desktop-section-teamproject .work-cover-point {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--intro-ease);
+}
+
+.desktop .desktop-section-teamproject .work-point-img {
+  display: block;
+  width: clamp(48px, 7.5vw, 100px);
+  height: auto;
+  max-width: min(36%, 100px);
+  transform: scale(0.88);
+  transition: transform 0.4s var(--intro-ease);
+}
+
+@keyframes workCoverPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .desktop .desktop-section-teamproject .work-cover:not(:hover) .work-cover-img {
+    animation: none;
+    transform: scale(1);
+  }
+
+  .desktop .desktop-section-teamproject .work-cover:hover .work-cover-point {
+    opacity: 1;
+  }
+
+  .desktop .desktop-section-teamproject .work-cover:hover .work-point-img {
+    transform: scale(1);
+  }
+
+  .desktop .desktop-section-teamproject .work-cover:hover .work-cover-img {
+    animation: workCoverPulse 1.5s ease-in-out infinite alternate;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop .desktop-section-teamproject .work-cover .work-cover-img {
+    animation: none !important;
+    transition: transform 0.25s ease;
+  }
+
+  .desktop .desktop-section-teamproject .work-cover-point,
+  .desktop .desktop-section-teamproject .work-point-img {
+    transition: opacity 0.2s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .desktop .desktop-section-teamproject .work-cover:hover .work-cover-point {
+      opacity: 1;
+    }
+
+    .desktop .desktop-section-teamproject .work-cover:hover .work-point-img {
+      transform: scale(1);
+    }
+
+    .desktop .desktop-section-teamproject .work-cover:hover .work-cover-img {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.desktop .desktop-section-teamproject .portfolio-list {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: calc(var(--gap-work-project-list) * var(--scale-view));
+  align-self: stretch;
+  min-width: 0;
+  min-height: calc(var(--height-project-list) * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project,
+.desktop .desktop-section-teamproject .service,
+.desktop .desktop-section-teamproject .tool,
+.desktop .desktop-section-teamproject .role {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap-work-project-box) * var(--scale-view));
+}
+
+.desktop .desktop-section-teamproject .project-period {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap-work-project-box) * var(--scale-view));
+}
+
+.desktop .desktop-section-teamproject .project-period-label {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-work-category) * 1px * var(--scale-view));
+  font-weight: 400;
+  line-height: calc(var(--line-height-work-label) * 1px * var(--scale-view));
+  letter-spacing: 0;
+  color: var(--color-gray);
+}
+
+.desktop .desktop-section-teamproject .project-period-value {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-work-portfolio-content) * 1px * var(--scale-view));
+  font-weight: 500;
+  line-height: calc(var(--line-height-work-portfolio-content) * 1px * var(--scale-view));
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.desktop .desktop-section-teamproject .servie-title,
+.desktop .desktop-section-teamproject .tool-title,
+.desktop .desktop-section-teamproject .role-title {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-work-category) * 1px * var(--scale-view));
+  font-weight: 400;
+  line-height: calc(var(--line-height-work-label) * 1px * var(--scale-view));
+  letter-spacing: 0;
+  color: var(--color-gray);
+}
+
+.desktop .desktop-section-teamproject .service-content {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-work-portfolio-content) * 1px * var(--scale-view));
+  font-weight: 500;
+  line-height: calc(var(--line-height-work-portfolio-content) * 1px * var(--scale-view));
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+/* 데스크톱(≥1025px): WORK 77px · 프로젝트명 22px semibold · Period·Service 18px — 태블릿은 responsive.css */
+@media (min-width: 1025px) {
+  .desktop .desktop-section-teamproject .work-section-title {
+    font-size: 77px;
+    line-height: 77px;
+  }
+
+  .desktop .desktop-section-other .other-title {
+    font-size: 77px;
+    line-height: 77px;
+  }
+
+  .desktop .desktop-section-teamproject .project-content {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 26px;
+  }
+
+  .desktop .desktop-section-teamproject .project-period-value {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .desktop .desktop-section-teamproject .service-content {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  /* 데스크톱에서도 태블릿과 같은 칩 체감 크기 유지 */
+  .desktop .desktop-section-teamproject .tool-content,
+  .desktop .desktop-section-teamproject .role-content {
+    gap: 8px;
+  }
+
+  .desktop .desktop-section-teamproject .tool-pill,
+  .desktop .desktop-section-teamproject .role-pill {
+    min-height: 40px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  /* section2 Service는 데스크톱에서 한 줄 강제 (Mobile Web/App Product Design) */
+  .desktop .desktop-section-teamproject .project-section2 .service-content {
+    white-space: nowrap;
+  }
+
+  .desktop .desktop-section-teamproject .project-section2 .service-content br {
+    display: none;
+  }
+}
+
+.desktop .desktop-section-teamproject .tool-content,
+.desktop .desktop-section-teamproject .role-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(var(--gap-about-content) * var(--scale-view));
+}
+
+.desktop .desktop-section-teamproject .tool-pill,
+.desktop .desktop-section-teamproject .role-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: calc(var(--height-work-pill) * var(--scale-view));
+  height: calc(var(--height-work-pill) * var(--scale-view));
+  padding: 0 calc(var(--gap-about-content) * var(--scale-view));
+  border: none;
+  border-radius: calc(var(--radius-work-pill) * var(--scale-view));
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: calc(var(--font-work-category) * 1px * var(--scale-view));
+  font-weight: 450;
+  line-height: calc(var(--line-height-work-pill-text) * 1px * var(--scale-view));
+  letter-spacing: 0;
+  color: var(--color-black);
+  background: var(--color-bg-2);
+}
+
+/* project-section2 Role: 두 줄(role-pills-row) — UX·Design system은 같은 행에서만 8px 간격 */
+.desktop .desktop-section-teamproject .project-section2 .role-content {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap-about-content) * var(--scale-view));
+  width: 100%;
+  min-width: 0;
+}
+
+.desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: calc(var(--gap-about-content) * var(--scale-view));
+  min-width: 0;
+}
+
+.desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row:first-child .role-pill:first-child {
+  white-space: nowrap;
+  width: calc(var(--width-work-role-pill-planning) * 1px * var(--scale-view));
+  min-width: calc(var(--width-work-role-pill-planning) * 1px * var(--scale-view));
+  max-width: calc(var(--width-work-role-pill-planning) * 1px * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-section2 .role-content > .role-pills-row .role-pill {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* project-section3: 1행 기획(213)|UX(147) · 2행 Design|Prototype|Branding(동일 gap) */
+.desktop .desktop-section-teamproject .project-section3 .role-content {
+  display: grid;
+  grid-template-columns:
+    calc(var(--width-work-role-pill-planning-design) * 1px * var(--scale-view))
+    calc(var(--width-work-role-pill-ux-research) * 1px * var(--scale-view));
+  grid-template-rows: auto auto;
+  column-gap: calc(var(--gap-about-content) * var(--scale-view));
+  row-gap: calc(var(--gap-about-content) * var(--scale-view));
+  justify-content: start;
+  align-items: center;
+}
+
+.desktop .desktop-section-teamproject .project-section3 .role-content > .role-pill:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  width: calc(var(--width-work-role-pill-planning-design) * 1px * var(--scale-view));
+  min-width: calc(var(--width-work-role-pill-planning-design) * 1px * var(--scale-view));
+  max-width: calc(var(--width-work-role-pill-planning-design) * 1px * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-section3 .role-content > .role-pill:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  width: calc(var(--width-work-role-pill-ux-research) * 1px * var(--scale-view));
+  min-width: calc(var(--width-work-role-pill-ux-research) * 1px * var(--scale-view));
+  max-width: calc(var(--width-work-role-pill-ux-research) * 1px * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-section3 .role-content > .role-pills-row {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: calc(var(--gap-about-content) * var(--scale-view));
+  min-width: 0;
+}
+
+.desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill:nth-child(1) {
+  width: calc(var(--width-work-role-pill-design-system) * 1px * var(--scale-view));
+  min-width: calc(var(--width-work-role-pill-design-system) * 1px * var(--scale-view));
+  max-width: calc(var(--width-work-role-pill-design-system) * 1px * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill:nth-child(2) {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill:nth-child(3) {
+  width: calc(var(--width-work-role-pill-branding) * 1px * var(--scale-view));
+  min-width: calc(var(--width-work-role-pill-branding) * 1px * var(--scale-view));
+  max-width: calc(var(--width-work-role-pill-branding) * 1px * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-teamproject .project-section3 .role-content > .role-pill,
+.desktop .desktop-section-teamproject .project-section3 .role-pills-row .role-pill {
+  white-space: nowrap;
+}
+
+/* project-section4~6: 두 칩 가로 한 줄 (이미지·Figma 정렬) */
+.desktop .desktop-section-teamproject .project-section4 .role-content,
+.desktop .desktop-section-teamproject .project-section5 .role-content,
+.desktop .desktop-section-teamproject .project-section6 .role-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: calc(var(--gap-about-content) * var(--scale-view));
+  width: 100%;
+  min-width: 0;
+}
+
+.desktop .desktop-section-teamproject .project-section4 .role-content,
+.desktop .desktop-section-teamproject .project-section5 .role-content,
+.desktop .desktop-section-teamproject .project-section6 .role-content {
+  justify-content: flex-start;
+}
+
+.desktop .desktop-section-teamproject .project-section4 .role-pill,
+.desktop .desktop-section-teamproject .project-section5 .role-pill,
+.desktop .desktop-section-teamproject .project-section6 .role-pill {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ---------- desktop-section-contact ----------
+   Figma: MCP read_my_design(desktop-section-contact) — 레이어: section-inner, section-middle, section-text-box, email.box, desktop-contact-logo, section-header
+   - 좌우 inset padding-side-contact(90), 상단 padding-top-contact(108)
+   - 본문↔로고 가로 간격 gap-contact-content3(512) */
+
+.desktop .desktop-section-contact {
+  width: 100%;
+  max-width: var(--layout-max);
+  min-height: calc(1050px * var(--scale-view));
+  margin-left: auto;
+  margin-right: auto;
+  padding: calc(108px * var(--scale-view)) calc(90px * var(--scale-view)) 0;
+  box-sizing: border-box;
+  background: var(--color-contact);
+}
+
+.desktop .desktop-section-contact .contact-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: calc(16px * var(--scale-view));
+  width: 100%;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-contact .contact-section-title {
+  margin: 0;
+  min-height: calc(100px * var(--scale-view));
+  font-family: Paperlogy, "Pretendard Variable", Pretendard, sans-serif;
+  font-size: clamp(40px, 4.0104vw, 77px);
+  font-weight: 700;
+  line-height: clamp(56px, 5.2083vw, 100px);
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.desktop .desktop-section-contact .section-middle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: min(calc(512px * var(--scale-view)), 8vw);
+  row-gap: calc(48px * var(--scale-view));
+  width: 100%;
+  min-height: calc(690px * var(--scale-view));
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-contact .section-text-box {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: calc(64px * var(--scale-view));
+  width: min(calc(740px * var(--scale-view)), 100%);
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.desktop .desktop-section-contact .sub-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-contact-content1);
+  width: 100%;
+}
+
+.desktop .desktop-section-contact .sub-tltle .contact-sub-title {
+  margin: 0;
+  white-space: nowrap;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(28px, 2.5vw, 48px);
+  font-weight: 700;
+  line-height: clamp(40px, 3.8vw, 73px);
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.desktop .desktop-section-contact .sub-text .contact-sub-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(4px, 0.35vw, 10px);
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(18px, 1.5625vw, 30px);
+  font-weight: 300;
+  line-height: clamp(32px, 2.76vw, 53px);
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.desktop .desktop-section-contact .email-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.desktop .desktop-section-contact .contact-email {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(18px, 1.5625vw, 30px);
+  font-weight: 500;
+  line-height: clamp(32px, 2.5vw, 48px);
+  letter-spacing: 0;
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.desktop .desktop-section-contact .contact-email:hover {
+  opacity: 0.92;
+}
+
+.desktop .desktop-section-contact .desktop-contact-logo {
+  flex-shrink: 0;
+  width: min(calc(488px * var(--scale-view)), 40%);
+  max-width: 100%;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-contact .desktop-contact-logo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.desktop .desktop-section-contact .section-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: var(--gap-contact-content4) 0 0;
+  border: none;
+  border-top: 1px solid var(--color-black);
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-contact .section-header .logoname {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.desktop .desktop-section-contact .section-header .contact-footer-copy,
+.desktop .desktop-section-contact .section-header .contact-footer-email {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 500;
+  line-height: clamp(28px, 2.0833vw, 40px);
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.desktop .desktop-section-contact .section-header .contact-footer-email {
+  text-decoration: none;
+}
+
+.desktop .desktop-section-contact .section-header .contact-footer-email:hover {
+  text-decoration: underline;
+}
